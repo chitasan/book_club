@@ -37,7 +37,3 @@ golding = Author.create(name: "William Golding")
 
 tolkien = Author.create(name: "J. R. R. Tolkien")
   r_king = tolkien.books.create(title: "The Return of the King", pages: 416, year: 1955, image:  "https://i.pinimg.com/originals/b8/41/9a/b8419ab382635f1b05003f9cbcf88401.jpg")
-
-
-
-s_king.auth
