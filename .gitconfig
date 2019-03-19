@@ -1,0 +1,7 @@
+
+#for gitconfig file 
+[commit] 
+  template = ~/.gitmessage
+
+[core]
+  editor = code --wait 
