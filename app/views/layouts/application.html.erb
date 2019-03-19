@@ -9,6 +9,14 @@
   </head>
 
   <body>
+    <section id="nav-bar">
+      <% unless @home %>
+        <%= link_to "Return to Homepage", root_path %>
+      <% end %>
+      <% unless @books %>
+        <%= link_to "Go to Books", books_path %>
+      <% end %>
+    </section>
     <%= yield %>
   </body>
 </html>
