@@ -4,9 +4,9 @@ User.destroy_all
 Book.destroy_all
 Author.destroy_all
 
-s_king = Author.create(name: "Stephen King")
-  stand = s_king.books.create(title: "The Stand", pages: 823, year: 1978, image:  "https://upload.wikimedia.org/wikipedia/en/9/96/The_Stand_cover.jpg")
-  shining = s_king.books.create(title: "The Shining", pages: 447, year: 1977, image:  "https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/Shiningnovel.jpg/220px-Shiningnovel.jpg")
+king = Author.create(name: "Stephen King")
+  stand = king.books.create(title: "The Stand", pages: 823, year: 1978, image:  "https://upload.wikimedia.org/wikipedia/en/9/96/The_Stand_cover.jpg")
+  shining = king.books.create(title: "The Shining", pages: 447, year: 1977, image:  "https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/Shiningnovel.jpg/220px-Shiningnovel.jpg")
 
 coelho = Author.create(name: "Paulo Coelho")
   alchemist = coelho.books.create(title: "The Alchemist", pages: 163, year: 1988, image:  "https://pictures.abebooks.com/SABRA2015/18269767749.jpg")
@@ -14,10 +14,8 @@ coelho = Author.create(name: "Paulo Coelho")
 martel = Author.create(name: "Yann Martel")
   pi = martel.books.create(title: "Life of Pi", pages: 354, year: 2001, image:  "https://upload.wikimedia.org/wikipedia/en/4/45/Life_of_Pi_cover.png")
 
-
 wallace = Author.create(name: "David Foster Wallace")
   jest = wallace.books.create(title: "Infinite Jest", pages: 1079, year: 1996, image:  "https://upload.wikimedia.org/wikipedia/en/thumb/4/4f/Infinite_jest_cover.jpg/220px-Infinite_jest_cover.jpg")
-
 
 orwell = Author.create(name: "George Orwell")
   farm = orwell.books.create(title: "Animal Farm", pages: 112, year: 1945, image:  "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Animal_Farm_-_1st_edition.jpg/220px-Animal_Farm_-_1st_edition.jpg")
@@ -37,3 +35,11 @@ golding = Author.create(name: "William Golding")
 
 tolkien = Author.create(name: "J. R. R. Tolkien")
   r_king = tolkien.books.create(title: "The Return of the King", pages: 416, year: 1955, image:  "https://i.pinimg.com/originals/b8/41/9a/b8419ab382635f1b05003f9cbcf88401.jpg")
+
+metz = Author.create(name: "Sandi Metz")
+  ruby = metz.books.create(title: "Practical Object-Oriented Design in Ruby: An Agile Primer", pages: 273, year: 2012, image:  "https://images-na.ssl-images-amazon.com/images/I/51lFbn3LPCL._SX381_BO1,204,203,200_.jpg")
+
+  99_bottles = metz.books.create(title: "99 Bottles of OOP", pages: 270, year: 2017, image:  "https://static1.squarespace.com/static/537c0374e4b0f52ed92942e6/t/5793c96e29687f134e799ac0/1469303271611/")
+
+owen = Author.create(name: "Katrina Owen")
+  AuthorBook.create(author: owen, book: 99_bottles)
