@@ -1,0 +1,11 @@
+<h1>All Books</h1>
+
+<% @books.each do |book| %>
+  <article class="book" id="book-<%= book.id %>">
+    <img class="book_cover" src="<%= book.book_cover_photo %>" alt="<%= book.book_cover_photo %>" width="200">
+    <ul>
+    <li><%= book.title %></li>
+    <li>Pages: <%= book.pages %></li>
+    <li>Publication Date: <%= book.pub_date %></li>
+    </ul>
+<% end %>
