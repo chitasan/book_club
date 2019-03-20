@@ -6,4 +6,16 @@ RSpec.describe Book do
     it {should validate_presence_of :pages}
     it {should validate_presence_of :pub_date}
   end
+
+  describe "instance methods" do
+    it ".co_authors" do
+      author_1 = create(:author)
+      author_2 = create(:author)
+      book = create(:book)
+      AuthorBook.create(author: author_1, book: book)
+      AuthorBook.create(author: author_2, book: book)
+
+      expect(book.co_authors(author_1)).to eq([author_2])
+    end
+  end
 end
