@@ -1,0 +1,10 @@
+<section class="book" id="book-<%= @book.id %>">
+  <h1><%= @book.title %></h1>
+  <ul>
+  <img src="<%= @book.book_cover_photo %>" alt="Book Cover Photo">
+  <li>Author(s): 
+  <%= @book.authors.map { |author| author.name }.join(", ")%></li>
+  <li>Pages: <%= @book.pages %></li>
+  <li>Publication Date: <%= @book.pub_date %></li>
+  </ul>
+</section>
