@@ -1,0 +1,17 @@
+<section id="author-info">
+  <h1><%= @author.name %></h1>
+</section>
+
+
+<% @author.books.each do |book| %>
+  <section id="abook-<%= book.id %>">
+    <h3><%= book.title %></h3>
+    <p>Page Count: <%= book.pages %></p>
+    <p>Publishing Year: <%= book.pub_date %></p>
+    <% if book.co_authors(@author).count > 0 %>
+      <p>Co-Authors: <% book.co_authors(@author).each do |author| %><%= author.name %>
+                    <% end %>
+      </p>
+    <% end %>
+  </section>
+<% end %>
