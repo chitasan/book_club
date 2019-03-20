@@ -8,4 +8,8 @@ class Book < ApplicationRecord
   def co_authors(author)
     authors.where.not(id: author.id)
   end
+
+  def top_review
+    reviews.order(rating: :desc).first
+  end
 end
