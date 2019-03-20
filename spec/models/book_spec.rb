@@ -23,5 +23,14 @@ RSpec.describe Book do
 
       expect(book.co_authors(author_1)).to eq([author_2])
     end
+
+    it ".top_review" do
+      book = create(:book)
+      review_1 = create(:good_review, book: book)
+      review_2 = create(:review, book: book)
+      review_3 = create(:bad_review, book: book)
+
+      expect(book.top_review).to eq(review_1)
+    end
   end
 end

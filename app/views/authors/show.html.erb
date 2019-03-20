@@ -13,5 +13,12 @@
                     <% end %>
       </p>
     <% end %>
+    <% unless book.reviews.count == 0 %>
+      <section id="top-review">
+        <p>Top Review: <%= book.top_review.title %></p>
+        <p>Rating: <%= book.top_review.rating %></p>
+        <p><%= book.top_review.user_name%> says: <%= book.top_review.content %></p>
+      </section>
+    <% end %>
   </section>
 <% end %>
