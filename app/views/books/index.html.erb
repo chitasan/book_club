@@ -5,9 +5,13 @@
     <img class="book_cover" src="<%= book.book_cover_photo %>" alt="<%= book.book_cover_photo %>" alt="Book Cover Photo" width="200">
     <ul>
     <li><%= link_to book.title, book_path(book) %></li>
-    <li>Author(s):
-    <%= book.authors.map { |author| author.name }.join(", ") %></li>
+    <li>Author(s):</li>
+    <% book.authors.each do |author| %> <li><%= link_to author.name, author_path(author) %></li>
+    <% end %>
     <li>Pages: <%= book.pages %></li>
     <li>Publication Date: <%= book.pub_date %></li>
+    <li>Average Rating: <%= book.average_rating %></li>
+    </ul>
+    <li>Total No. of Reviews: <%= book.total_reviews %></li>
     </ul>
 <% end %>
