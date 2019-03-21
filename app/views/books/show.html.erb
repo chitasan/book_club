@@ -1,11 +1,23 @@
 <section class="book" id="book-<%= @book.id %>">
   <h1><%= @book.title %></h1>
-  <ul>
+
   <img src="<%= @book.book_cover_photo %>" alt="Book Cover Photo">
+  <ul>
   <li>Author(s):</li>
-    <% @book.authors.each do |author| %> <li><%= link_to author.name, author_path(author) %></li>
+    <% @book.authors.each do |author| %> 
+      <li><%= link_to author.name, author_path(author) %></li>
     <% end %>
   <li>Pages: <%= @book.pages %></li>
   <li>Publication Date: <%= @book.pub_date %></li>
   </ul>
 </section>
+
+<h3>Reviews<h3>
+<section class="reviews" id="review-#{review.id}">
+  <% @book.reviews.each do |review| %>
+    <li>User: <%= review.user_name %></li>
+    <li>Title: <%= review.title %></li>
+    <li>Review: <%= review.content %></li>
+    <li>Rating: <%= review.rating %></li> 
+  <% end %>
+</section> 
