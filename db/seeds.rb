@@ -70,7 +70,7 @@ metz = Author.create(name: "Sandi Metz")
     review_29 = ruby.reviews.create(title: "Interesting...", rating: 3, content: "I got the wrong book! But my son, who's in coding bootcamp put it to good use and enjoyed it.", user_name: "Danny")
 
   bottles = metz.books.create(title: "99 Bottles of OOP", pages: 270, pub_date: 2017, book_cover_photo:  "https://static1.squarespace.com/static/537c0374e4b0f52ed92942e6/t/5793c96e29687f134e799ac0/1469303271611/")
-    review_30 = bottles.reviews.create(title: "Not a mixology book.", rating: 4, content: "I went into this thinking it was a thriller, but it is not. I finished it anyway and found the logic interesting.", user_name: "Ralph")
+    review_30 = bottles.reviews.create(title: "Not a mixology book.", rating: 4, content: "I went into this thinking it was a book on beer, but it is not. I finished it anyway and found the logic interesting.", user_name: "Ralph")
 
 owen = Author.create(name: "Katrina Owen")
   AuthorBook.create(author: owen, book: bottles)
