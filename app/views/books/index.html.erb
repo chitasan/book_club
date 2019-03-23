@@ -2,12 +2,28 @@
 
 <section class="new_book">
   <nav>
-    <%= link_to , new_book_path(book) %>
+    <%= link_to "Add a new book", new_book_path %>
   <nav>
 </section>
 
 <section class="stats" id="book_stats">
   <h3>Statistics</h3>
+    <section id="best_three">
+      <h4>Highest-Rated Books:</h4>
+        <ul>
+          <% @top_three.each do |book| %>
+            <li><%= book.title %>, Rating: <%= book.rating %></li>
+          <% end %>
+        </ul>
+    </section>
+
+    <section id="worst_three">
+
+    </section>
+
+    <section id="most_reviews">
+
+    </section>
 </section>
 
 <section>
@@ -28,4 +44,3 @@
     </article>
   <% end %>
 </section>
-
