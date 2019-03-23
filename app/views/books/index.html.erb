@@ -28,6 +28,12 @@
 
     <section id="most_reviews">
       <h4>Users With The Most Reviews:</h4>
+      <ul>
+        <% @most_reviews.each do |user| %>
+          <li><%= link_to user, user_show_path(user) %>
+          has written <%= .reviews_by_name %> reviews</li>
+        <% end %>
+      </ul>
     </section>
 </section>
 
