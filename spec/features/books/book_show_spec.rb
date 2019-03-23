@@ -36,12 +36,15 @@ RSpec.describe 'book show page', type: :feature do
 
   it 'should show all review contents for a book' do
     visit book_path(@book_1)
-    
+
     within "#review-#{@review_1.id}" do
       expect(page).to have_link("#{@review_1.user_name}")
       expect(page).to have_content("Title: #{@review_1.title}")
       expect(page).to have_content("Review: #{@review_1.content}")
       expect(page).to have_content("Rating: #{@review_1.rating}")
+      click_link "#{@review_1.user_name}"
     end
+
+    expect(current_path).to eq(user_show_path(@review_1.user_name))
   end
 end

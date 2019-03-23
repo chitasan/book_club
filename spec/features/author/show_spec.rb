@@ -45,18 +45,28 @@ RSpec.describe "author show" do
 
     it "should see top reviews for each book" do
       visit author_path(@author_1)
-      
+
       within "#abook-#{@book_1.id}" do
         expect(page).to have_content("Top Review: #{@review_1.title}")
         expect(page).to have_content("Rating: #{@review_1.rating}")
         expect(page).to have_content("#{@review_1.user_name} says: #{@review_1.content}")
+        expect(page).to have_link("#{@review_1.user_name}")
+        click_link "#{@review_1.user_name}"
       end
+
+      expect(current_path).to eq(user_show_path(@review_1.user_name))
+
+      visit author_path(@author_1)
 
       within "#abook-#{@book_2.id}" do
         expect(page).to have_content("Top Review: #{@review_3.title}")
         expect(page).to have_content("Rating: #{@review_3.rating}")
         expect(page).to have_content("#{@review_3.user_name} says: #{@review_3.content}")
+        expect(page).to have_link("#{@review_3.user_name}")
+        click_link "#{@review_3.user_name}"
       end
+
+      expect(current_path).to eq(user_show_path(@review_3.user_name))
     end
   end
 end
