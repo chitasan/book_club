@@ -28,9 +28,8 @@ RSpec.describe Book do
       @review_2 = create(:review, book: @book_1)
       @review_3 = create(:bad_review, book: @book_1)
 
-      @review_4 = create(:good_review, book: @book_2)
+      @review_4 = create(:bad_review, book: @book_2)
       @review_5 = create(:review, book: @book_2)
-      @review_6 = create(:bad_review, book: @book_2)
     end
 
     it '.co_authors' do
@@ -39,10 +38,17 @@ RSpec.describe Book do
 
     it '.top_review' do
       expect(@book_1.top_review).to eq(@review_1)
+      expect(@book_2.top_review).to eq(@review_5)
     end
 
-    xit '.average_rating' do
-      expect(Book.average_rating).to eq(3)
+    it '.average_rating' do
+      expect(@book_1.average_rating.round(1)).to eq(3)
+      expect(@book_2.average_rating.round(1)).to eq(2)
     end 
+
+    it '.total_reviews' do
+      expect(@book_1.total_reviews).to eq(3)
+      expect(@book_2.total_reviews).to eq(2)
+    end
   end
 end

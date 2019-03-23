@@ -14,7 +14,7 @@ class Book < ApplicationRecord
   end
 
   def average_rating
-    average(:rating)
+    reviews.average(:rating)
   end
 
   def total_reviews
