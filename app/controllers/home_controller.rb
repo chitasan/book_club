@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  def welcome
-    @home = "home"
+  def welcomes
+    @contributors = "variable"
   end
 end

@@ -13,7 +13,7 @@ RSpec.describe Review do
   end
 
   describe "class methods" do
-    it ".sort_username" do
+    xit ".sort_username" do
       book1 = create(:book)
       review1 = create(:review, book: book1)
       review2 = create(:review, book: book1)
@@ -23,13 +23,15 @@ RSpec.describe Review do
 
     it ".most_reviews" do
       book1 = create(:book)
-      review1 = create(:review, book: book1)
+      review1 = create(:review, book: book1, user_name: "User 1")
       review2 = create(:review, book: book1, user_name: "User 1")
-      review1 = create(:review, book: book1)
-      review2 = create(:review, book: book1, user_name: "User 1")
-      review1 = create(:review, book: book1)
-      review2 = create(:review, book: book1, user_name: "User 1")
-      review2 = create(:review, book: book1, user_name: "User 1")
+      review3 = create(:review, book: book1, user_name: "User 2")
+      review4 = create(:review, book: book1, user_name: "User 2")
+      review5 = create(:review, book: book1, user_name: "User 3")
+      review6 = create(:review, book: book1, user_name: "User 3")
+      review7 = create(:review, book: book1, user_name: "User 4")
+
+      expect(Review.most_reviews).to eq(["User 1", "User 2", "User 3"])
     end
 
     it ".reviews_by_name" do
@@ -40,8 +42,5 @@ RSpec.describe Review do
 
       expect(Review.reviews_by_name("User 1")).to eq(3)
     end
-  end
-
-  describe "instance methods" do
   end
 end

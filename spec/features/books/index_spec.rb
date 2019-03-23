@@ -78,9 +78,9 @@ RSpec.describe 'book index page', type: :feature do
 
       within "#most_reviews" do
         expect(page).to have_content("Users With The Most Reviews:")
-        expect(page).to have_content("#{@review_1.user_name} has written #{@review_1.reviews_by_name} reviews")
-        expect(page).to have_content("#{@review_2.user_name} has written #{@review_2.reviews_by_name} reviews")
-        expect(page).to have_content("#{@review_3.user_name} has written #{@review_3.reviews_by_name} reviews")
+        expect(page).to have_content("#{@review_1.user_name} has written #{Review.reviews_by_name("User 1")} reviews")
+        expect(page).to have_content("#{@review_2.user_name} has written #{Review.reviews_by_name("User 2")} reviews")
+        expect(page).to have_content("#{@review_3.user_name} has written #{Review.reviews_by_name("User 3")} reviews")
       end
     end
   end

@@ -31,7 +31,7 @@
       <ul>
         <% @most_reviews.each do |user| %>
           <li><%= link_to user, user_show_path(user) %>
-          has written <%= .reviews_by_name %> reviews</li>
+          has written <%= Review.reviews_by_name(user) %> reviews</li>
         <% end %>
       </ul>
     </section>

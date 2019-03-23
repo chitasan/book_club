@@ -1,7 +1,11 @@
+Contributor.destroy_all
 AuthorBook.destroy_all
-# Review.destroy_all
+Review.destroy_all
 Book.destroy_all
 Author.destroy_all
+
+trevor = Contributor.create(name: "Trevor", github: "https://github.com/tnodland")
+chi = Contributor.create(name: "Chi", github: "https://github.com/chitasan")
 
 king = Author.create(name: "Stephen King")
   stand = king.books.create(title: "The Stand", pages: 823, pub_date: 1978, book_cover_photo:  "https://upload.wikimedia.org/wikipedia/en/9/96/The_Stand_cover.jpg")
@@ -11,7 +15,7 @@ king = Author.create(name: "Stephen King")
     review_3 = shining.reviews.create(title: "SCARY", rating: 3, content: "I slept with the lights on for a week.", user_name: "Jack")
     review_4 = shining.reviews.create(title: "It's okay", rating: 2, content: "The movie was much better.", user_name: "Wendy")
     review_5 = shining.reviews.create(title: "Wow", rating: 5, content: "This will be a classic.", user_name: "Danny")
-    
+
 
 coelho = Author.create(name: "Paulo Coelho")
   alchemist = coelho.books.create(title: "The Alchemist", pages: 163, pub_date: 1988, book_cover_photo:  "https://pictures.abebooks.com/SABRA2015/18269767749.jpg")
@@ -44,7 +48,7 @@ atwood = Author.create(name: "Margaret Atwood")
 
 ayn = Author.create(name: "Ayn Rand")
   atlas = ayn.books.create(title: "Atlas Shrugged", pages: 1168, pub_date: 1957, book_cover_photo:  "https://cdn.theatlantic.com/assets/media/img/mt/2013/10/atlas-shrugged-sg-amazon/lead_large.jpg")
-    review_19 = atlas.reviews.create(title: "Thought Provoking", rating: 4, content: "Dystopian novel that combines economics, sci-fic, philosphy, while keeping intrigue.", user_name: "Charles")  
+    review_19 = atlas.reviews.create(title: "Thought Provoking", rating: 4, content: "Dystopian novel that combines economics, sci-fic, philosphy, while keeping intrigue.", user_name: "Charles")
     review_20 = atlas.reviews.create(title: "Too Long", rating: 3, content: "I may have liked it more if it wasn't so long. Who has the time?", user_name: "Old Major")
     review_21 = atlas.reviews.create(title: "Remarkable", rating: 4, content: "This is much more enjoyable than The Fountainhead.", user_name: "Rita")
 
@@ -74,4 +78,3 @@ metz = Author.create(name: "Sandi Metz")
 
 owen = Author.create(name: "Katrina Owen")
   AuthorBook.create(author: owen, book: bottles)
-

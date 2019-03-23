@@ -10,4 +10,8 @@
     def self.reviews_by_name(username)
       where(user_name: username).count
     end
+
+    def self.most_reviews
+      binding.pry
+    end
   end
