@@ -12,6 +12,8 @@ RSpec.describe "author show" do
       AuthorBook.create(book: @book_2, author: @author_2)
       @review_1 = create(:good_review, book: @book_1)
       @review_2 = create(:bad_review, book: @book_1)
+      @review_3 = create(:good_review, book: @book_2)
+      @review_4 = create(:bad_review, book: @book_2)
     end
     it "should see some info" do
 
@@ -38,6 +40,22 @@ RSpec.describe "author show" do
         expect(page).to have_content("Page Count: #{@book_2.pages}")
         expect(page).to have_content("Publishing Year: #{@book_2.pub_date}")
         expect(page).to have_content("Co-Authors: #{@author_2.name}")
+      end
+    end
+
+    it "should see top reviews for each book" do
+      visit author_path(@author_1)
+      
+      within "#abook-#{@book_1.id}" do
+        expect(page).to have_content("Top Review: #{@review_1.title}")
+        expect(page).to have_content("Rating: #{@review_1.rating}")
+        expect(page).to have_content("#{@review_1.user_name} says: #{@review_1.content}")
+      end
+
+      within "#abook-#{@book_2.id}" do
+        expect(page).to have_content("Top Review: #{@review_3.title}")
+        expect(page).to have_content("Rating: #{@review_3.rating}")
+        expect(page).to have_content("#{@review_3.user_name} says: #{@review_3.content}")
       end
     end
   end
