@@ -12,6 +12,6 @@
     end
 
     def self.most_reviews
-      binding.pry
+
     end
   end
