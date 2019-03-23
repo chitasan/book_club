@@ -1,0 +1,16 @@
+<%= form_for [@book, @review] do |f| %>
+
+  <%= f.label :title, "Review Title"%>
+  <%= f.text_field :title %>
+
+  <%= f.label :rating %>
+  <%= f.number_field :rating, min: 1, max: 5 %>
+
+  <%= f.label :content, "Review" %>
+  <%= f.text_field :content %>
+
+  <%= f.label :user_name, "Username" %>
+  <%= f.text_field :user_name %>
+
+  <%= f.submit %>
+<% end %>

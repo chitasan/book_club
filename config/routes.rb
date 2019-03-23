@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "home#welcome"
-  resources :books, only: [:index, :show, :new, :create]
+  resources :books, only: [:index, :show, :new, :create] do
+    resources :reviews, only: [:new, :index, :create]
+  end
   resources :authors, only: [:show]
-  get '/review/:username', to: "reviews#index", as: :user_show
+  get '/:username', to: "reviews#index", as: :user_show
 end

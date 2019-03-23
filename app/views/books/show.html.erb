@@ -4,7 +4,7 @@
   <img src="<%= @book.book_cover_photo %>" alt="Book Cover Photo">
   <ul>
   <li>Author(s):</li>
-    <% @book.authors.each do |author| %> 
+    <% @book.authors.each do |author| %>
       <li><%= link_to author.name, author_path(author) %></li>
     <% end %>
   <li>Pages: <%= @book.pages %></li>
@@ -14,23 +14,26 @@
 
 <h3>Review Statistics</h3>
 <section class="review_stats" id="review_stats-#{review.id}">
-  <p>Top 3 Reviews: 
+  <p>Top 3 Reviews:
     <ol>
-  
+
     </ol>
-  <p>Bottom 3 Reviews: 
+  <p>Bottom 3 Reviews:
      <ol>
- 
+
     </ol>
-  <p>Average Rating: <%= @book.average_rating.round(1) %></p>
-</section> 
+  <% unless @book.reviews.empty? %>
+    <p>Average Rating: <%= @book.average_rating.round(1) %></p>
+  <% end %>
+</section>
 
 <h3>Reviews</h3>
-<section class="reviews" id="review-#{review.id}">
+  <%= link_to "Write a new review for this book", new_book_review_path(@book) %>
   <% @book.reviews.each do |review| %>
-    <p>User: <%= review.user_name %></p>
-    <p>Title: <%= review.title %></p>
-    <p>Review: <%= review.content %></p>
-    <p>Rating: <%= review.rating %></p><br> 
+    <section class="reviews" id="review-<%= review.id %>">
+      <p>User: <%= link_to review.user_name, user_show_path(review.user_name) %></p>
+      <p>Title: <%= review.title %></p>
+      <p>Review: <%= review.content %></p>
+      <p>Rating: <%= review.rating %></p><br>
+    </section>
   <% end %>
-</section> 
