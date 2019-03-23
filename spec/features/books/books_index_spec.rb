@@ -4,6 +4,7 @@ RSpec.describe 'book index page', type: :feature do
   before :each do
     @book_1 = create(:book)
     @book_2 = create(:book)
+    @book_3 = create(:book)
     @author_1 = create(:author)
     @author_2 = create(:author)
 
@@ -12,6 +13,10 @@ RSpec.describe 'book index page', type: :feature do
 
     @review_1 = create(:good_review, book: @book_1)
     @review_2 = create(:bad_review, book: @book_1)
+    @review_3 = create(:good_review, book: @book_2)
+    @review_4 = create(:bad_review, book: @book_2)
+    @review_5 = create(:good_review, book: @book_3)
+    @review_6 = create(:bad_review, book: @book_3)
   end
 
   it 'shows all books contents' do
@@ -48,5 +53,15 @@ RSpec.describe 'book index page', type: :feature do
     within "#book-#{@book_1.id}" do
       expect(page).to have_content("Total No. of Reviews: #{@book_1.total_reviews}")
     end 
+  end
+
+  xit 'shows statistics about all books' do
+    visit books_path
+
+    within "#book_stats" do  
+      expect(page).to have_content("Highest-Rated Books: #{}")
+      expect(page).to have_content("Worst-Rated Books: #{}")
+      expect(page).to have_content("Users With The Most Reviews: #{name} No. Of Reviews: #{name}")
+    end
   end
 end
