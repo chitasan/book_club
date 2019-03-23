@@ -1,0 +1,8 @@
+<h1>Welcome to our Book Club Project!</h1>
+
+<h2>Project Contributors:</h2>
+
+<% @contributors.each do |c| %>
+  <p>Name: <%= c.name %></p>
+  <p>Github: <%= c.github %></p>
+<% end %>

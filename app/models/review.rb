@@ -4,6 +4,14 @@
     belongs_to :book
 
     def self.sort_username(username)
-      Review.where(user_name: username)
+      where(user_name: username)
+    end
+
+    def self.reviews_by_name(username)
+      where(user_name: username).count
+    end
+
+    def self.most_reviews
+      binding.pry
     end
   end
