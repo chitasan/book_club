@@ -65,23 +65,23 @@ RSpec.describe 'book index page', type: :feature do
 
       within "#best_three" do
         expect(page).to have_content("Highest-Rated Books:")
-        expect(page).to have_content("#{@book_1.title}")
-        expect(page).to have_content("#{@book_2.title}")
-        expect(page).to have_content("#{@book_3.title}")
+        expect(page).to have_link("#{@book_1.title}")
+        expect(page).to have_link("#{@book_2.title}")
+        expect(page).to have_link("#{@book_3.title}")
       end
 
       within "#worst_three" do
         expect(page).to have_content("Worst-Rated Books:")
-        expect(page).to have_content("#{@book_4.title}")
-        expect(page).to have_content("#{@book_3.title}")
-        expect(page).to have_content("#{@book_2.title}")
+        expect(page).to have_link("#{@book_4.title}")
+        expect(page).to have_link("#{@book_3.title}")
+        expect(page).to have_link("#{@book_2.title}")
       end
 
       within "#most_reviews" do
         expect(page).to have_content("Users With The Most Reviews:")
-        expect(page).to have_content("#{@review_1.user_name} has written #{@review_1.reviews_by_name} reviews")
-        expect(page).to have_content("#{@review_2.user_name} has written #{@review_2.reviews_by_name} reviews")
-        expect(page).to have_content("#{@review_3.user_name} has written #{@review_3.reviews_by_name} reviews")
+        expect(page).to have_link("#{@review_1.user_name} has written #{@review_1.reviews_by_name} reviews")
+        expect(page).to have_link("#{@review_2.user_name} has written #{@review_2.reviews_by_name} reviews")
+        expect(page).to have_link("#{@review_3.user_name} has written #{@review_3.reviews_by_name} reviews")
       end
     end
   end

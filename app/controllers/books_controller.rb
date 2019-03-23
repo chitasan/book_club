@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     @top_three = Book.top_three
+    @bottom_three = Book.bottom_three
   end
 
   def show

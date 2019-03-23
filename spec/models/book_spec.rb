@@ -77,5 +77,9 @@ RSpec.describe Book do
     it ".top_three" do
       expect(Book.top_three).to eq([@book_1, @book_2, @book_3])
     end
+
+    it ".bottom_three" do
+      expect(Book.bottom_three).to eq([@book_4, @book_3, @book_2])
+    end
   end
 end
