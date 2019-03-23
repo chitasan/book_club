@@ -1,10 +1,36 @@
 <section class="book" id="book-<%= @book.id %>">
   <h1><%= @book.title %></h1>
-  <ul>
+
   <img src="<%= @book.book_cover_photo %>" alt="Book Cover Photo">
-  <li>Author(s): 
-  <%= @book.authors.map { |author| author.name }.join(", ")%></li>
+  <ul>
+  <li>Author(s):</li>
+    <% @book.authors.each do |author| %> 
+      <li><%= link_to author.name, author_path(author) %></li>
+    <% end %>
   <li>Pages: <%= @book.pages %></li>
-  <li>Publication Date: <%= @book.pub_date %></li>
+  <li>Publication Year: <%= @book.pub_date %></li>
   </ul>
 </section>
+
+<h3>Review Statistics</h3>
+<section class="review_stats" id="review_stats-#{review.id}">
+  <p>Top 3 Reviews: 
+    <ol>
+  
+    </ol>
+  <p>Bottom 3 Reviews: 
+     <ol>
+ 
+    </ol>
+  <p>Average Rating: <%= @book.average_rating.round(1) %></p>
+</section> 
+
+<h3>Reviews</h3>
+<section class="reviews" id="review-#{review.id}">
+  <% @book.reviews.each do |review| %>
+    <p>User: <%= review.user_name %></p>
+    <p>Title: <%= review.title %></p>
+    <p>Review: <%= review.content %></p>
+    <p>Rating: <%= review.rating %></p><br> 
+  <% end %>
+</section> 

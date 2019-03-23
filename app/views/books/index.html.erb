@@ -1,13 +1,25 @@
-<h1>All Books</h1>
+<h1>Our Club Selection</h1>
 
-<% @books.each do |book| %>
-  <section class="book" id="book-<%= book.id %>">
-    <img class="book_cover" src="<%= book.book_cover_photo %>" alt="<%= book.book_cover_photo %>" alt="Book Cover Photo" width="200">
-    <ul>
-    <li><%= link_to book.title, book_path(book) %></li>
-    <li>Author(s):
-    <%= book.authors.map { |author| author.name }.join(", ") %></li>
-    <li>Pages: <%= book.pages %></li>
-    <li>Publication Date: <%= book.pub_date %></li>
-    </ul>
-<% end %>
+<section class="stats" id="book_stats">
+  <h3>Statistics</h3>
+</section>
+
+<section>
+  <h3>Books</h3>
+  <% @books.each do |book| %>
+    <article class="book" id="book-<%= book.id %>">
+      <img class="book_cover" src="<%= book.book_cover_photo %>" alt="<%= book.book_cover_photo %>" alt="Book Cover Photo" width="200">
+      <ul>
+      <li><%= link_to book.title, book_path(book) %></li>
+      <li>Author(s):</li>
+      <% book.authors.each do |author| %> <li><%= link_to author.name, author_path(author) %></li>
+      <% end %>
+      <li>Pages: <%= book.pages %></li>
+      <li>Publication Year: <%= book.pub_date %></li>
+      <li>Average Rating: <%= book.average_rating.round(1) %></li>
+      <li>Total No. of Reviews: <%= book.total_reviews %></li>
+      </ul>
+    </article>
+  <% end %>
+</section>
+
