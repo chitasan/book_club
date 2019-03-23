@@ -6,4 +6,8 @@
     def self.sort_username(username)
       Review.where(user_name: username)
     end
+
+    def reviews_by_name
+      Review.where(user_name: self.user_name).count
+    end
   end

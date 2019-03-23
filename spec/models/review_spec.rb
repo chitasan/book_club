@@ -21,4 +21,15 @@ RSpec.describe Review do
       expect(Review.sort_username("User 1")).to eq([review1])
     end
   end
+
+  describe "instance methods" do
+    it ".reviews_by_name" do
+      book1 = create(:book)
+      review1 = create(:review, book: book1)
+      review2 = create(:review, book: book1, user_name: "User 1")
+      review3 = create(:review, book: book1, user_name: "User 1")
+
+      expect(review1.reviews_by_name).to eq(3)
+    end
+  end
 end

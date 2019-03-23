@@ -5,6 +5,7 @@ RSpec.describe 'book index page', type: :feature do
     @book_1 = create(:book)
     @book_2 = create(:book)
     @book_3 = create(:book)
+    @book_4 = create(:book)
     @author_1 = create(:author)
     @author_2 = create(:author)
 
@@ -17,6 +18,7 @@ RSpec.describe 'book index page', type: :feature do
     @review_4 = create(:review, book: @book_2, user_name: "User 1")
     @review_5 = create(:review, book: @book_3, user_name: "User 2")
     @review_6 = create(:bad_review, book: @book_3, user_name: "User 3")
+    @review_7 = create(:bad_review, book: @book_4, user_name: "User 4")
   end
 
   it 'shows all books contents' do
@@ -56,9 +58,6 @@ RSpec.describe 'book index page', type: :feature do
   end
 
   it 'shows statistics about all books' do
-    book_4 = create(:book)
-    review_7 = create(:bad_review, book: book_4, user_name: "User 4")
-
     visit books_path
 
     within "#book_stats" do

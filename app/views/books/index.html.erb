@@ -21,13 +21,13 @@
       <h4>Worst-Rated Books:</h4>
         <ul>
           <% @bottom_three.each do |book| %>
-            <li><%= book.title %>, Rating: <%= book.average_rating %></li>
+            <li><%= link_to book.title, book_path(book) %>, Rating: <%= book.average_rating %></li>
           <% end %>
         </ul>
     </section>
 
     <section id="most_reviews">
-
+      <h4>Users With The Most Reviews:</h4>
     </section>
 </section>
 
