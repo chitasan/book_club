@@ -3,4 +3,8 @@ class ReviewsController < ApplicationController
     @user = params[:username]
     @reviews = Review.sort_username(@user)
   end
+
+  def new
+
+  end
 end

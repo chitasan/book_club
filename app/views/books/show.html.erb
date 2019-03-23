@@ -28,6 +28,7 @@
 </section>
 
 <h3>Reviews</h3>
+  <%= link_to "Write a new review for this book", new_book_review_path(@book) %>
   <% @book.reviews.each do |review| %>
     <section class="reviews" id="review-<%= review.id %>">
       <p>User: <%= link_to review.user_name, user_show_path(review.user_name) %></p>
