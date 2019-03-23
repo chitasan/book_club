@@ -8,10 +8,10 @@ RSpec.describe 'new book page', type: :feature do
     pub_date = 1950
 
     visit new_book_path
-    save_and_open_page
+ 
     fill_in 'Title', with: title
     fill_in 'Pages', with: pages
-  
+    fill_in 'Publication Date', with: pub_date
     #fill_in 'Authors', with: author
     #create book.authors params 
     

@@ -1,15 +1,15 @@
 <%= form_for @book do |f| %>
   <p>
-    <%= f.label :title %> 
+    <%= f.label :title, "Title" %> 
     <%= f.text_field :title %><br>
   
-    <%= f.label :authors %> 
+    <%= f.label :authors, "Authors" %> 
     <%= f.text_field :authors, value: "" %><br>
   
-    <%= f.label :pages %> 
+    <%= f.label :pages, "Pages" %> 
     <%= f.number_field :pages %><br>
 
-    <%= f.label :publication_date %> 
+    <%= f.label :pub_date, "Publication Date" %> 
     <%= f.number_field :pub_date %><br>
   </p>
 
