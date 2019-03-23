@@ -12,7 +12,7 @@ RSpec.describe 'book show page', type: :feature do
     @review_2 = create(:bad_review, book: @book_1) 
   end
 
-  it 'shows all contents for a book' do
+  it 'shows all contents for a book (cover photo, title, pages, pub year, author(s)' do
     visit book_path(@book_1)
 
     expect(page).to have_css("img[src*='#{@book_1.book_cover_photo}']")

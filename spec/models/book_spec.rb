@@ -51,4 +51,24 @@ RSpec.describe Book do
       expect(@book_2.total_reviews).to eq(2)
     end
   end
+
+  describe 'class methods' do
+    before :each do 
+      @book_1 = create(:book)
+      @book_2 = create(:book)
+
+      @author_1 = create(:author)
+      @author_2 = create(:author)
+    
+      AuthorBook.create(author: @author_1, book: @book_1)
+      AuthorBook.create(author: @author_2, book: @book_1)
+
+      @review_1 = create(:good_review, book: @book_1)
+      @review_2 = create(:review, book: @book_1)
+      @review_3 = create(:bad_review, book: @book_1)
+
+      @review_4 = create(:bad_review, book: @book_2)
+      @review_5 = create(:review, book: @book_2)
+    end
+  end 
 end
