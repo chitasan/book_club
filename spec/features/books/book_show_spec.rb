@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 RSpec.describe 'book show page', type: :feature do
   before :each do
     @book_1 = create(:book)
@@ -9,7 +11,7 @@ RSpec.describe 'book show page', type: :feature do
     AuthorBook.create(author: @author_2, book: @book_2)
 
     @review_1 = create(:good_review, book: @book_1)
-    @review_2 = create(:bad_review, book: @book_1) 
+    @review_2 = create(:bad_review, book: @book_1)
   end
 
   it 'shows all contents for a book (cover photo, title, pages, pub year, author(s)' do
@@ -32,14 +34,14 @@ RSpec.describe 'book show page', type: :feature do
     expect(page).to_not have_content(@book_1.title)
   end
 
-  # it 'should show all review contents for a book' do
-  #   visit book_path(@book_1)
-
-  #   within "#review-#{@review_1.id}" do
-  #     expect(page).to have_content("User: #{@review_1.user_name}")
-  #     expect(page).to have_content("Title: #{@review_1.title}")
-  #     expect(page).to have_content("Review: #{@review_1.content}")
-  #     expect(page).to have_content("Rating: #{@review_1.rating}")
-  #   end 
-  # end 
-end  
+  it 'should show all review contents for a book' do
+    visit book_path(@book_1)
+    
+    within "#review-#{@review_1.id}" do
+      expect(page).to have_link("#{@review_1.user_name}")
+      expect(page).to have_content("Title: #{@review_1.title}")
+      expect(page).to have_content("Review: #{@review_1.content}")
+      expect(page).to have_content("Rating: #{@review_1.rating}")
+    end
+  end
+end
