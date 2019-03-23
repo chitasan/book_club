@@ -15,8 +15,8 @@
       <% book.authors.each do |author| %> <li><%= link_to author.name, author_path(author) %></li>
       <% end %>
       <li>Pages: <%= book.pages %></li>
-      <li>Publication Date: <%= book.pub_date %></li>
-      <li>Average Rating: <%= book.average_rating %></li>
+      <li>Publication Year: <%= book.pub_date %></li>
+      <li>Average Rating: <%= book.average_rating.round(1) %></li>
       <li>Total No. of Reviews: <%= book.total_reviews %></li>
       </ul>
     </article>

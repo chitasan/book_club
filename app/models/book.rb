@@ -20,11 +20,4 @@ class Book < ApplicationRecord
   def total_reviews
     reviews.count
   end
-
-  def self.highest_rated
-    @books
-  end 
-
-  def self.worst_rated
-  end 
 end
