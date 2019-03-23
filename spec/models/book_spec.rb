@@ -14,13 +14,13 @@ RSpec.describe Book do
   end
 
   describe 'instance methods' do
-    before :each do 
+    before :each do
       @book_1 = create(:book)
       @book_2 = create(:book)
 
       @author_1 = create(:author)
       @author_2 = create(:author)
-    
+
       AuthorBook.create(author: @author_1, book: @book_1)
       AuthorBook.create(author: @author_2, book: @book_1)
 
@@ -44,7 +44,7 @@ RSpec.describe Book do
     it '.average_rating' do
       expect(@book_1.average_rating.round(1)).to eq(3)
       expect(@book_2.average_rating.round(1)).to eq(2)
-    end 
+    end
 
     it '.total_reviews' do
       expect(@book_1.total_reviews).to eq(3)
@@ -53,22 +53,29 @@ RSpec.describe Book do
   end
 
   describe 'class methods' do
-    before :each do 
+    before :each do
       @book_1 = create(:book)
       @book_2 = create(:book)
+      @book_3 = create(:book)
+      @book_4 = create(:book)
 
       @author_1 = create(:author)
       @author_2 = create(:author)
-    
+
       AuthorBook.create(author: @author_1, book: @book_1)
       AuthorBook.create(author: @author_2, book: @book_1)
 
       @review_1 = create(:good_review, book: @book_1)
-      @review_2 = create(:review, book: @book_1)
-      @review_3 = create(:bad_review, book: @book_1)
-
-      @review_4 = create(:bad_review, book: @book_2)
-      @review_5 = create(:review, book: @book_2)
+      @review_2 = create(:good_review, book: @book_1)
+      @review_3 = create(:good_review, book: @book_2)
+      @review_4 = create(:review, book: @book_2)
+      @review_5 = create(:review, book: @book_3)
+      @review_6 = create(:review, book: @book_3)
+      @review_7 = create(:bad_review, book: @book_4)
     end
-  end 
+
+    it ".top_three" do
+      expect(Book.top_three).to eq([@book_1, @book_2, @book_3])
+    end
+  end
 end

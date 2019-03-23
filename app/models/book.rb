@@ -20,4 +20,12 @@ class Book < ApplicationRecord
   def total_reviews
     reviews.count
   end
+
+  def self.top_three
+    Book.select("books.*, avg(rating) AS avg_rating")
+    .joins(:reviews)
+    .group(:id)
+    .order("avg_rating DESC")
+    .limit(3)
+  end
 end
