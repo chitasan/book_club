@@ -14,4 +14,12 @@
     def self.most_reviews
 
     end
+
+    def self.still_exists(user)
+      if Review.where(user_name: user).count > 0
+        true
+      else
+        false
+      end
+    end
   end

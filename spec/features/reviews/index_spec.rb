@@ -5,9 +5,9 @@ RSpec.describe "user show page" do
     before :each do
       @book1 = create(:book)
       @book2 = create(:book)
-      @review1 = create(:review, book: @book1)
-      @review2 = create(:good_review, book: @book1, user_name: "User 1")
-      @review3 = create(:bad_review, book: @book2, user_name: "User 1")
+      @review1 = create(:review, book: @book1, user_name: "User 1", created_at: "Fri, 22 Mar 2019 16:46:50 UTC +00:00")
+      @review2 = create(:good_review, book: @book1, user_name: "User 1", created_at: "Sat, 23 Mar 2019 16:46:50 UTC +00:00")
+      @review3 = create(:bad_review, book: @book2, user_name: "User 1", created_at: "Sun, 24 Mar 2019 16:46:50 UTC +00:00")
     end
 
     it "can see all reviews from a user" do
@@ -32,6 +32,37 @@ RSpec.describe "user show page" do
         expect(page).to have_content("Rating: #{@review3.rating}")
         expect(page).to have_content(@review3.content)
       end
+    end
+
+    xit "can sort reviews" do
+      within "sorting" do
+        expect(page).to have_link
+      end
+    end
+
+    it "can delete a review" do
+      visit user_show_path("User 1")
+
+      within "#review-#{@review1.id}" do
+        expect(page).to have_link("Delete this review")
+        click_link "Delete this review"
+      end
+
+      expect(current_path).to eq(user_show_path("User 1"))
+      expect(page).to_not have_content("meh")
+    end
+
+    it "is redirected to the books index page if it is the last review from a user" do
+      book = create(:book)
+      review = create(:review, book: book, user_name: "dude")
+
+      visit user_show_path(review.user_name)
+
+      within "#review-#{review.id}" do
+        click_link "Delete this review"
+      end
+
+      expect(current_path).to eq(books_path)
     end
   end
 end

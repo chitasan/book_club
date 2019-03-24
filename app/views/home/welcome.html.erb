@@ -3,6 +3,8 @@
 <h2>Project Contributors:</h2>
 
 <% @contributors.each do |c| %>
-  <p>Name: <%= c.name %></p>
-  <p>Github: <%= c.github %></p>
+  <section id="contributor-<%= c.id %>">
+    <p>Name: <%= c.name %></p>
+    <p>Github: <%= link_to c.github, "#{c.github}" %></p>
+  </section>
 <% end %>

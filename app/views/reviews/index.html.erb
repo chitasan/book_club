@@ -2,8 +2,9 @@
 
 <% @reviews.each do |review| %>
   <section id="review-<%= review.id %>">
-    <h3><%= review.title %></h3>
-    <p>Rating: <%= review.rating %></p>
-    <p><%= review.content %></p>
+      <h3><%= review.title %></h3>
+      <p>Rating: <%= review.rating %></p>
+      <p><%= review.content %></p>
+      <p><%= link_to "Delete this review", delete_review_path(review), method: :delete %></p>
   </section>
 <% end %>

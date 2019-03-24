@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20190323212626) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "contributor", force: :cascade do |t|
+  create_table "contributors", force: :cascade do |t|
     t.string "name"
     t.string "github"
   end
