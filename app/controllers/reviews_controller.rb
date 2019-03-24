@@ -19,7 +19,11 @@ class ReviewsController < ApplicationController
     review = Review.find(params[:review_id])
     user = review.user_name
     review.destroy
-    redirect_to(user_show_path(user))
+    if Review.still_exists(user)
+      redirect_to(user_show_path(user))
+    else
+      redirect_to books_path
+    end
   end
 
   private

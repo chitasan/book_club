@@ -21,6 +21,15 @@ RSpec.describe Review do
       expect(Review.sort_username("User 1")).to eq([review1])
     end
 
+    it ".still_exists" do
+      book1 = create(:book)
+      review1 = create(:review, book: book1)
+      review2 = create(:review, book: book1)
+
+      expect(Review.still_exists("bananas")).to eq(false)
+      expect(Review.still_exists("#{review1.user_name}")).to eq(true)
+    end
+
     it ".most_reviews" do
       book1 = create(:book)
       review1 = create(:review, book: book1, user_name: "User 1")
