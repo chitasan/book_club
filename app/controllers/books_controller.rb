@@ -3,7 +3,7 @@ class BooksController < ApplicationController
     @books = Book.all
     @top_three = Book.top_three
     @bottom_three = Book.bottom_three
-    @most_reviews = Review.most_reviews
+    # @most_reviews = Review.most_reviews
   end
 
   def show
@@ -21,6 +21,12 @@ class BooksController < ApplicationController
     else
       render :new
     end
+  end
+
+  def delete
+    book = Book.find(params[:id])
+    book.destroy
+    redirect_to books_path
   end
 
   private

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :index, :create]
   end
 
+  delete '/books/:id', to: "books#delete", as: :delete_book
   delete '/:review_id', to: "reviews#delete", as: :delete_review
   resources :authors, only: [:show]
   get '/:username', to: "reviews#index", as: :user_show
