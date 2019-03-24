@@ -57,4 +57,21 @@ RSpec.describe 'book show page', type: :feature do
 
     expect(current_path).to eq(new_book_review_path(@book_1))
   end
+
+  it "can be deleted" do
+    visit book_path(@book_1)
+
+    book = @book_1.title
+    author = @author_1.name
+    user = @review_1.user_name
+
+    expect(page).to have_link("Delete this book")
+    click_link "Delete this book"
+
+    expect(current_path).to eq(books_path)
+
+    expect(page).to_not have_content(book)
+    expect(page).to_not have_content(author)
+    expect(Review.still_exists(user)).to eq(false)
+  end
 end

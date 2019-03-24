@@ -10,6 +10,7 @@
   <li>Pages: <%= @book.pages %></li>
   <li>Publication Year: <%= @book.pub_date %></li>
   </ul>
+  <p><%= link_to "Delete this book", book_path(@book), method: :delete %></p>
 </section>
 
 <h3>Review Statistics</h3>

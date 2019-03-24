@@ -51,5 +51,18 @@ RSpec.describe "user show page" do
       expect(current_path).to eq(user_show_path("User 1"))
       expect(page).to_not have_content("meh")
     end
+
+    it "is redirected to the books index page if it is the last review from a user" do
+      book = create(:book)
+      review = create(:review, book: book, user_name: "dude")
+
+      visit user_show_path(review.user_name)
+
+      within "#review-#{review.id}" do
+        click_link "Delete this review"
+      end
+
+      expect(current_path).to eq(books_path)
+    end
   end
 end

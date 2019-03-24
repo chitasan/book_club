@@ -14,4 +14,12 @@
     def self.most_reviews
       binding.pry
     end
+
+    def self.still_exists(user)
+      if Review.where(user_name: user).count > 0
+        true
+      else
+        false
+      end
+    end
   end
