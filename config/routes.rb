@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
 
   delete '/books/:id', to: "books#delete", as: :delete_book
+  delete '/authors/:id', to: "authors#delete", as: :delete_author
   delete '/:review_id', to: "reviews#delete", as: :delete_review
   resources :authors, only: [:show]
   get '/:username', to: "reviews#index", as: :user_show
