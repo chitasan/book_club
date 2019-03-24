@@ -1,11 +1,11 @@
-Contributor.destroy_all
+# Contributor.destroy_all
 AuthorBook.destroy_all
 Review.destroy_all
 Book.destroy_all
 Author.destroy_all
 
-trevor = Contributor.create(name: "Trevor", github: "https://github.com/tnodland")
-chi = Contributor.create(name: "Chi", github: "https://github.com/chitasan")
+# trevor = Contributor.create(name: "Trevor", github: "https://github.com/tnodland")
+# chi = Contributor.create(name: "Chi", github: "https://github.com/chitasan")
 
 king = Author.create(name: "Stephen King")
   stand = king.books.create(title: "The Stand", pages: 823, pub_date: 1978, book_cover_photo:  "https://upload.wikimedia.org/wikipedia/en/9/96/The_Stand_cover.jpg")

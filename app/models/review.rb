@@ -12,7 +12,7 @@
     end
 
     def self.most_reviews
-      binding.pry
+
     end
 
     def self.still_exists(user)
