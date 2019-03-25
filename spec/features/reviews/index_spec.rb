@@ -48,6 +48,18 @@ RSpec.describe "user show page" do
         expect(page.all(".review")[1]).to have_content(@review2.title)
         expect(page.all(".review")[2]).to have_content(@review3.title)
       end
+
+      within "#sorting" do
+        click_link "Sort by newest"
+      end
+
+      expect(current_path).to eq(user_show_sort_path("User 1", :desc))
+
+      within "#reviews" do
+        expect(page.all(".review")[2]).to have_content(@review1.title)
+        expect(page.all(".review")[1]).to have_content(@review2.title)
+        expect(page.all(".review")[0]).to have_content(@review3.title)
+      end
     end
 
     it "can delete a review" do
