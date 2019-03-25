@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   def index
     @user = params[:username]
-    @reviews = Review.sort_username(@user)
+    @reviews = show_params(@user)
   end
 
   def new
@@ -30,5 +30,13 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:title, :rating, :content, :user_name)
+  end
+
+  def show_params(user)
+    if params[:sort]
+      Review.sort_age(user, params[:sort].to_sym)
+    else
+      Review.sort_username(user)
+    end
   end
 end
