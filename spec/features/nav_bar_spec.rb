@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "nav bar" do
   context "as a visitor" do
-    xit "should see a nav bar" do
+    it "should see a nav bar" do
       book = create(:book)
       visit root_path
 
