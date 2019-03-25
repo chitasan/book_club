@@ -13,10 +13,10 @@ RSpec.describe Review do
   end
 
   describe "class methods" do
-    xit ".sort_username" do
+    it ".sort_username" do
       book1 = create(:book)
-      review1 = create(:review, book: book1)
-      review2 = create(:review, book: book1)
+      review1, review2 = create_list(:review, 2, book: book1)
+      # review2 = create(:review, book: book1)
 
       expect(Review.sort_username("User 1")).to eq([review1])
     end
@@ -50,11 +50,11 @@ RSpec.describe Review do
 
     it ".reviews_by_name" do
       book1 = create(:book)
-      review1 = create(:review, book: book1)
+      review1 = create(:review, book: book1, user_name: "User 2")
       review2 = create(:review, book: book1, user_name: "User 1")
       review3 = create(:review, book: book1, user_name: "User 1")
 
-      expect(Review.reviews_by_name("User 1")).to eq(3)
+      expect(Review.reviews_by_name("User 1")).to eq(2)
     end
   end
 end
