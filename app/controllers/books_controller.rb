@@ -15,15 +15,17 @@ class BooksController < ApplicationController
   end
 
   def create
-    book = Book.create(book_params)
+    @error = "error"
+    @book = Book.create(book_params)
     authors = author_params[:authors].split(", ")
-    if book.save
+    if @book.save
       authors.each do |author|
-        book.authors.find_or_create_by(name: author)
+        @book.authors.find_or_create_by(name: author)
       end
-      redirect_to book_path(book)
+
+      redirect_to book_path(@book)
     else
-      render :new
+      render 'books/new'
     end
   end
 

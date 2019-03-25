@@ -24,4 +24,20 @@ RSpec.describe 'new book page', type: :feature do
     expect(page).to have_content(pages)
     expect(page).to have_content(pub_date)
   end
+
+  it "can't save a book with missing info" do
+    title = "To Kill a Mockingbird"
+    pages = 123
+    authors = "Harper Lee, Trevor"
+
+    visit new_book_path
+
+    fill_in 'Title', with: title
+    fill_in 'Pages', with: pages
+    fill_in 'Authors', with: authors
+
+    click_button 'Create Book'
+
+    expect(page).to have_content("1 error prevented this book from being saved:")
+  end
 end

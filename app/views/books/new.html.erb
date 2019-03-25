@@ -1,15 +1,29 @@
+<% if @book.errors.any? %>
+   <div id=“error_message”>
+     <h3>
+       <%= pluralize(@book.errors.count, @error) %> prevented
+       this book from being saved:
+     </h3>
+     <ul>
+       <% @book.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
+     </ul>
+   </div>
+ <% end %>
+
 <%= form_for @book do |f| %>
   <p>
-    <%= f.label :title, "Title" %> 
+    <%= f.label :title, "Title" %>
     <%= f.text_field :title %><br>
-  
-    <%= f.label :authors, "Authors" %> 
+
+    <%= f.label :authors, "Authors" %>
     <%= f.text_field :authors, value: "" %><br>
-  
-    <%= f.label :pages, "Pages" %> 
+
+    <%= f.label :pages, "Pages" %>
     <%= f.number_field :pages %><br>
 
-    <%= f.label :pub_date, "Publication Date" %> 
+    <%= f.label :pub_date, "Publication Date" %>
     <%= f.number_field :pub_date %><br>
   </p>
 
