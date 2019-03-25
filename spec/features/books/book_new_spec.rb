@@ -1,23 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe 'new book page', type: :feature do
-  it 'should create a new book successfully' do 
+  it 'should create a new book successfully' do
     title = "To Kill a Mockingbird"
     pages = 123
-    author = "Harper Lee"
+    authors = "Harper Lee, Trevor"
     pub_date = 1950
 
     visit new_book_path
- 
+
     fill_in 'Title', with: title
     fill_in 'Pages', with: pages
     fill_in 'Publication Date', with: pub_date
-    #fill_in 'Authors', with: author
-    #create book.authors params 
-    
+    fill_in 'Authors', with: authors
+
     click_button 'Create Book'
 
     book = Book.last
     expect(current_path).to eq(book_path(book))
-  end 
-end 
+
+    visit author_path(Author.last)
+    expect(page).to have_content(title)
+    expect(page).to have_content(pages)
+    expect(page).to have_content(pub_date)
+  end
+end

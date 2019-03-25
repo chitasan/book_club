@@ -16,7 +16,11 @@ class BooksController < ApplicationController
 
   def create
     book = Book.create(book_params)
+    authors = author_params[:authors].split(", ")
     if book.save
+      authors.each do |author|
+        book.authors.find_or_create_by(name: author)
+      end
       redirect_to book_path(book)
     else
       render :new
@@ -32,6 +36,10 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :pages, :authors)
+    params.require(:book).permit(:title, :pages, :pub_date)
+  end
+
+  def author_params
+    params.require(:book).permit(:authors)
   end
 end
