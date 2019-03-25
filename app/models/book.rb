@@ -10,7 +10,7 @@ class Book < ApplicationRecord
   end
 
   def top_review
-    sorted_reviews(desc, 1).first
+    sorted_reviews(:desc, 1).first
   end
 
   def sorted_reviews(order, limit)
