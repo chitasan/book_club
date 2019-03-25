@@ -37,8 +37,8 @@ RSpec.describe Book do
     end
 
     it '.top_review' do
-      expect(@book_1.top_review).to eq(@review_1)
-      expect(@book_2.top_review).to eq(@review_5)
+      expect(@book_1.sorted_reviews(:desc, 1)).to eq([@review_1])
+      expect(@book_2.sorted_reviews(:desc, 1)).to eq([@review_5])
     end
 
     it '.average_rating' do
@@ -49,6 +49,11 @@ RSpec.describe Book do
     it '.total_reviews' do
       expect(@book_1.total_reviews).to eq(3)
       expect(@book_2.total_reviews).to eq(2)
+    end
+
+    it 'sorted_reviews' do
+      expect(@book_1.sorted_reviews(:desc, 3)).to eq([@review_1, @review_2, @review_3])
+      expect(@book_2.sorted_reviews(:asc, 2)).to eq([@review_4, @review_5])
     end
   end
 
