@@ -74,4 +74,24 @@ RSpec.describe 'book show page', type: :feature do
     expect(page).to_not have_content(author)
     expect(Review.still_exists(user)).to eq(false)
   end
+
+  it 'has stats about a book' do
+    review_3 = create(:good_review, book: @book_1)
+    review_4 = create(:good_review, book: @book_1)
+    review_5 = create(:bad_review, book: @book_1)
+    review_6 = create(:bad_review, book: @book_1)
+
+    visit book_path(@book_1)
+
+    within '#review_stats'
+    expect(page).to have_content("Top 3 Reviews:")
+    expect(page).to have_content("#{@review_1.title}")
+    expect(page).to have_content("#{review_3.title}")
+    expect(page).to have_content("#{review_4.title}")
+    expect(page).to have_content("Bottom 3 Reviews:")
+    expect(page).to have_content("#{@review_2.title}") 
+    expect(page).to have_content("#{review_5.title}") 
+    expect(page).to have_content("#{review_6.title}")
+    expect(page).to have_content("Overall Average Rating: #{@book_1.average_rating}")
+  end
 end

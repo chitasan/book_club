@@ -14,24 +14,27 @@
 </section>
 
 <h3>Review Statistics</h3>
-<section class="review_stats" id="review_stats-#{review.id}">
+<section class="review_stats" id="review_stats">
   <p>Top 3 Reviews:
     <ul>
-      <% @sorted_reviews(desc, 3).each do |review| %>
+      <% @top_reviews.each do |review| %>
         <li><%= review.title %></li>
         <li>Rating: <%= review.rating %></li>
         <li>User: <%= review.user_name %></li>
       <% end %>
-    </l>
+    </ul>
+  </p>
   <p>Bottom 3 Reviews:
      <ul>
-       <% @sorted_reviews(asc, 3).each do |review| %>
+       <% @bottom_reviews.each do |review| %>
         <li><%= review.title %></li>
         <li>Rating: <%= review.rating %></li>
         <li>User: <%= review.user_name %></li>
+      <% end %>
     </ul>
+  </p>
   <% unless @book.reviews.empty? %>
-    <p>Average Rating: <%= @book.average_rating.round(1) %></p>
+    <p>Overall Average Rating: <%= @average_rating.round(1) %></p>
   <% end %>
 </section>
 
