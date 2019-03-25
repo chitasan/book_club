@@ -15,6 +15,7 @@ RSpec.describe "author show" do
       @review_3 = create(:good_review, book: @book_2)
       @review_4 = create(:bad_review, book: @book_2)
     end
+
     it "should see some info" do
 
       visit author_path(@author_1)
@@ -68,5 +69,20 @@ RSpec.describe "author show" do
 
       expect(current_path).to eq(user_show_path(@review_3.user_name))
     end
+
+    it 'can be deleted' do 
+      visit author_path(@author_1)
+
+      book = @book_1.title
+      author = @author_1.name
+
+      expect(page).to have_link("Delete this author")
+      click_link "Delete this author"
+
+      expect(current_path).to eq(books_path)
+
+      expect(page).to_not have_content(book)
+      expect(page).to_not have_content(author)
+    end 
   end
 end
