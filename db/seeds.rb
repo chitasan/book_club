@@ -1,4 +1,4 @@
-Contributor.destroy_all
+# Contributor.destroy_all
 AuthorBook.destroy_all
 Review.destroy_all
 Book.destroy_all
