@@ -11,7 +11,7 @@
       <h3><%= review.title %></h3>
       <p>Rating: <%= review.rating %></p>
       <p><%= review.content %></p>
-      <p><%= link_to "Delete this review", delete_review_path(review), method: :delete %></p>
-    </li>
+      <p><%= link_to "Delete this review", delete_review_path(review), method: :delete, data: { confirm: "Are you sure?" } %></p>
+  </section>
 <% end %>
 </ul>

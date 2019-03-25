@@ -1,6 +1,6 @@
 class Book < ApplicationRecord
   has_many :author_books, dependent: :destroy
-  has_many :authors, through: :author_books, dependent: :destroy
+  has_many :authors, through: :author_books
   has_many :reviews, dependent: :destroy
 
   validates_presence_of :title, :pages, :pub_date
@@ -10,7 +10,7 @@ class Book < ApplicationRecord
   end
 
   def top_review
-    sorted_reviews(desc, 1).first
+    sorted_reviews(:desc, 1).first
   end
 
   def sorted_reviews(order, limit)
@@ -18,7 +18,7 @@ class Book < ApplicationRecord
   end
 
   def average_rating
-    reviews.average(:rating)
+    reviews.average(:rating) || 0
   end
 
   def total_reviews
