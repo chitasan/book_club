@@ -3,7 +3,7 @@ class BooksController < ApplicationController
     @books = Book.all
     @top_three = Book.top_three
     @bottom_three = Book.bottom_three
-    # @most_reviews = Review.most_reviews
+    @most_reviews = Review.most_reviews(3)
   end
 
   def show

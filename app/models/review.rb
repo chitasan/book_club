@@ -11,8 +11,11 @@
       where(user_name: username).count
     end
 
-    def self.most_reviews
-      binding.pry
+    def self.most_reviews(limit)
+      select("reviews.user_name, count(reviews.id) AS review_count")
+      .group(:user_name)
+      .order("review_count DESC")
+      .limit(limit)
     end
 
     def self.still_exists(user)
