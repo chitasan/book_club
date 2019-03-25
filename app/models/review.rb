@@ -11,6 +11,10 @@
       where(user_name: username).count
     end
 
+    def self.sort_age(username, order)
+      Review.where(user_name: username).order(created_at: order)
+    end
+
     def self.most_reviews(limit)
       select("reviews.user_name, count(reviews.id) AS review_count")
       .group(:user_name)

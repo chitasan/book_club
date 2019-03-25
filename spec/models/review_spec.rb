@@ -21,6 +21,14 @@ RSpec.describe Review do
       expect(Review.sort_username("User 1")).to eq([review1])
     end
 
+    it ".sort_age" do
+      book1 = create(:book)
+      review1 = create(:review, book: book1, user_name: "User 1", created_at: "Fri, 22 Mar 2019 16:46:50 UTC +00:00")
+      review2 = create(:review, book: book1, user_name: "User 1", created_at: "Sat, 23 Mar 2019 16:46:50 UTC +00:00")
+
+      expect(Review.sort_age("User 1", :asc)).to eq([review1, review2])
+    end
+
     it ".still_exists" do
       book1 = create(:book)
       review1 = create(:review, book: book1)

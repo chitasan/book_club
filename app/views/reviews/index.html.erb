@@ -1,10 +1,17 @@
 <h1><%= @user %>'s page</h1>
 
-<% @reviews.each do |review| %>
-  <section id="review-<%= review.id %>">
+<section id="sorting">
+  <%= link_to "Sort by oldest", user_show_sort_path(@user, :asc)%>
+  <%= link_to "Sort by newest", user_show_sort_path(@user, :desc)%>
+</section>
+
+<ul id="reviews">
+  <% @reviews.each do |review| %>
+    <li class="review" id="review-<%= review.id %>">
       <h3><%= review.title %></h3>
       <p>Rating: <%= review.rating %></p>
       <p><%= review.content %></p>
       <p><%= link_to "Delete this review", delete_review_path(review), method: :delete, data: { confirm: "Are you sure?" } %></p>
   </section>
 <% end %>
+</ul>
