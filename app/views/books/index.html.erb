@@ -28,12 +28,12 @@
 
     <section id="most_reviews">
       <h4>Users With The Most Reviews:</h4>
-      <%# <ul>
+      <ul>
         <% @most_reviews.each do |user| %>
-          <%# <li><%= link_to user, user_show_path(user) %> %>
-          <%# has written <%= Review.reviews_by_name(user) %> reviews</li> %>
-        <%# <% end %> %>
-      <%# </ul> %> %>
+          <li><%= link_to user.user_name, user_show_path(user.user_name) %>
+          has written <%= Review.reviews_by_name(user.user_name) %> reviews</li>
+        <% end %>
+      </ul>
     </section>
 </section>
 
@@ -49,7 +49,7 @@
       <% end %>
       <li>Pages: <%= book.pages %></li>
       <li>Publication Year: <%= book.pub_date %></li>
-        <%# <li>Average Rating: <%= book.average_rating.round(1) %></li> %>
+      <li>Average Rating: <%= book.average_rating.round(1) %></li>
       <li>Total No. of Reviews: <%= book.total_reviews %></li>
       </ul>
     </article>

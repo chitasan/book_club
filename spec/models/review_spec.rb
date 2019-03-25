@@ -32,15 +32,20 @@ RSpec.describe Review do
 
     it ".most_reviews" do
       book1 = create(:book)
-      review1 = create(:review, book: book1, user_name: "User 1")
-      review2 = create(:review, book: book1, user_name: "User 1")
-      review3 = create(:review, book: book1, user_name: "User 2")
-      review4 = create(:review, book: book1, user_name: "User 2")
-      review5 = create(:review, book: book1, user_name: "User 3")
-      review6 = create(:review, book: book1, user_name: "User 3")
-      review7 = create(:review, book: book1, user_name: "User 4")
+      create(:review, book: book1, user_name: "User 1")
+      create(:review, book: book1, user_name: "User 1")
+      create(:review, book: book1, user_name: "User 1")
+      create(:review, book: book1, user_name: "User 1")
+      create(:review, book: book1, user_name: "User 2")
+      create(:review, book: book1, user_name: "User 2")
+      create(:review, book: book1, user_name: "User 2")
+      create(:review, book: book1, user_name: "User 3")
+      create(:review, book: book1, user_name: "User 3")
+      create(:review, book: book1, user_name: "User 4")
 
-      expect(Review.most_reviews).to eq(["User 1", "User 2", "User 3"])
+      expect(Review.most_reviews(3)[0].user_name).to eq("User 1")
+      expect(Review.most_reviews(3)[1].user_name).to eq("User 2")
+      expect(Review.most_reviews(3)[2].user_name).to eq("User 3")
     end
 
     it ".reviews_by_name" do

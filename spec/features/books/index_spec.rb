@@ -59,7 +59,7 @@ RSpec.describe 'book index page', type: :feature do
 
   it 'shows statistics about all books' do
     visit books_path
-
+    
     within "#book_stats" do
 
       within "#best_three" do
