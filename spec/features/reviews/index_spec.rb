@@ -7,7 +7,7 @@ RSpec.describe "user show page" do
       @book2 = create(:book)
       @review1 = create(:review, book: @book1, user_name: "User 1", created_at: "Fri, 22 Mar 2019 16:46:50 UTC +00:00")
       @review2 = create(:good_review, book: @book1, user_name: "User 1", created_at: "Sat, 23 Mar 2019 16:46:50 UTC +00:00")
-      @review3 = create(:bad_review, book: @book2, user_name: "User 1", created_at: "Sun, 24 Mar 2019 16:46:50 UTC +00:00")
+      @review3 = create(:bad_review, book: @book1, user_name: "User 1", created_at: "Sun, 24 Mar 2019 16:46:50 UTC +00:00")
     end
 
     it "can see all reviews from a user" do
@@ -34,9 +34,19 @@ RSpec.describe "user show page" do
       end
     end
 
-    xit "can sort reviews" do
-      within "sorting" do
-        expect(page).to have_link
+    it "can sort reviews" do
+      visit user_show_path("User 1")
+
+      within "#sorting" do
+        click_link "Sort by oldest"
+      end
+
+      expect(current_path).to eq(user_show_sort_path("User 1", :asc))
+
+      within "#reviews" do
+        expect(page.all(".review")[0]).to have_content(@review1.title)
+        expect(page.all(".review")[1]).to have_content(@review2.title)
+        expect(page.all(".review")[2]).to have_content(@review3.title)
       end
     end
 
