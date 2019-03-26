@@ -23,11 +23,11 @@ RSpec.describe "author show" do
       within "#author-info" do
         expect(page).to have_content(@author_1.name)
       end
-      # save_and_open_page
+
       within "#abook-#{@book_1.id}" do
         expect(page).to have_content(@book_1.title)
-        expect(page).to have_content("Page Count: #{@book_1.pages}")
-        expect(page).to have_content("Publishing Year: #{@book_1.pub_date}")
+        expect(page).to have_content("Pages: #{@book_1.pages}")
+        expect(page).to have_content("Publication Year: #{@book_1.pub_date}")
 
         within "#top-review" do
           expect(page).to have_content("Top Review: #{@review_1.title}")
@@ -38,8 +38,8 @@ RSpec.describe "author show" do
 
       within "#abook-#{@book_2.id}" do
         expect(page).to have_content(@book_2.title)
-        expect(page).to have_content("Page Count: #{@book_2.pages}")
-        expect(page).to have_content("Publishing Year: #{@book_2.pub_date}")
+        expect(page).to have_content("Pages: #{@book_2.pages}")
+        expect(page).to have_content("Publication Year: #{@book_2.pub_date}")
         expect(page).to have_content("Co-Authors: #{@author_2.name}")
       end
     end
