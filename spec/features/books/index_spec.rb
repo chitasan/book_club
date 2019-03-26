@@ -100,5 +100,18 @@ RSpec.describe 'book index page', type: :feature do
       expect(page.all(".book")[2]).to have_content(@book_3.title)
       expect(page.all(".book")[3]).to have_content(@book_4.title)
     end
+
+    within "#sorting" do
+      click_link "Sort by page count (descending)"
+    end
+
+    expect(current_path).to eq(books_sort_path("pages", :desc))
+
+    within "#books" do
+      expect(page.all(".book")[0]).to have_content(@book_4.title)
+      expect(page.all(".book")[1]).to have_content(@book_3.title)
+      expect(page.all(".book")[2]).to have_content(@book_2.title)
+      expect(page.all(".book")[3]).to have_content(@book_1.title)
+    end
   end
 end
