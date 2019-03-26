@@ -12,7 +12,7 @@ RSpec.describe 'new book page', type: :feature do
     fill_in 'Title', with: title
     fill_in 'Pages', with: pages
     fill_in 'Publication Date', with: pub_date
-    fill_in 'Authors', with: authors
+    fill_in 'Author(s)', with: authors
 
     click_button 'Create Book'
 
@@ -34,10 +34,10 @@ RSpec.describe 'new book page', type: :feature do
 
     fill_in 'Title', with: title
     fill_in 'Pages', with: pages
-    fill_in 'Authors', with: authors
+    fill_in 'Author(s)', with: authors
 
     click_button 'Create Book'
 
-    expect(page).to have_content("1 error prevented this book from being saved:")
+    expect(page).to have_content("1 error prevented it from being saved:")
   end
 end
