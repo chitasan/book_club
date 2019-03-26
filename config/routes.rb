@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :authors, only: [:show]
   get '/:username', to: "reviews#index", as: :user_show
   get '/:username/:sort', to: "reviews#index", as: :user_show_sort
+  get '/books/:sort/:order', to: "books#index", as: :books_sort
 end

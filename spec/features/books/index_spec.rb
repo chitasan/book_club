@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'book index page', type: :feature do
   before :each do
-    @book_1 = create(:book)
-    @book_2 = create(:book)
-    @book_3 = create(:book)
-    @book_4 = create(:book)
+    @book_4 = create(:book, pages: 600, pub_date: 2000)
+    @book_2 = create(:book, pub_date: 1950)
+    @book_1 = create(:short_book, pub_date: 1900)
+    @book_3 = create(:long_book, pub_date: 1975)
     @author_1 = create(:author)
     @author_2 = create(:author)
 
@@ -13,9 +13,12 @@ RSpec.describe 'book index page', type: :feature do
     AuthorBook.create(author: @author_2, book: @book_2)
 
     @review_1 = create(:good_review, book: @book_1, user_name: "User 1")
+    @review_8 = create(:good_review, book: @book_1, user_name: "User 1")
+    @review_9 = create(:good_review, book: @book_1, user_name: "User 1")
     @review_2 = create(:good_review, book: @book_1, user_name: "User 2")
     @review_3 = create(:review, book: @book_2, user_name: "User 3")
     @review_4 = create(:review, book: @book_2, user_name: "User 1")
+    @review_10 = create(:review, book: @book_2, user_name: "User 1")
     @review_5 = create(:review, book: @book_3, user_name: "User 2")
     @review_6 = create(:bad_review, book: @book_3, user_name: "User 3")
     @review_7 = create(:bad_review, book: @book_4, user_name: "User 4")
@@ -59,7 +62,7 @@ RSpec.describe 'book index page', type: :feature do
 
   it 'shows statistics about all books' do
     visit books_path
-    
+
     within "#book_stats" do
 
       within "#best_three" do
@@ -82,6 +85,96 @@ RSpec.describe 'book index page', type: :feature do
         expect(page).to have_content("#{@review_2.user_name} has written #{Review.reviews_by_name("User 2")} reviews")
         expect(page).to have_content("#{@review_3.user_name} has written #{Review.reviews_by_name("User 3")} reviews")
       end
+    end
+  end
+
+  it "can sort books by pages" do
+    visit books_path
+
+    within "#sorting" do
+      click_link "Sort by page count (ascending)"
+    end
+
+    expect(current_path).to eq(books_sort_path("pages", :asc))
+
+    within "#books" do
+      expect(page.all(".book")[0]).to have_content(@book_1.title)
+      expect(page.all(".book")[1]).to have_content(@book_2.title)
+      expect(page.all(".book")[2]).to have_content(@book_3.title)
+      expect(page.all(".book")[3]).to have_content(@book_4.title)
+    end
+
+    within "#sorting" do
+      click_link "Sort by page count (descending)"
+    end
+
+    expect(current_path).to eq(books_sort_path("pages", :desc))
+
+    within "#books" do
+      expect(page.all(".book")[0]).to have_content(@book_4.title)
+      expect(page.all(".book")[1]).to have_content(@book_3.title)
+      expect(page.all(".book")[2]).to have_content(@book_2.title)
+      expect(page.all(".book")[3]).to have_content(@book_1.title)
+    end
+  end
+
+  it "can sort books by pub date" do
+    visit books_path
+
+    within "#sorting" do
+      click_link "Sort by date of publication (ascending)"
+    end
+
+    expect(current_path).to eq(books_sort_path("pub_date", :asc))
+
+    within "#books" do
+      expect(page.all(".book")[0]).to have_content(@book_1.title)
+      expect(page.all(".book")[1]).to have_content(@book_2.title)
+      expect(page.all(".book")[2]).to have_content(@book_3.title)
+      expect(page.all(".book")[3]).to have_content(@book_4.title)
+    end
+
+    within "#sorting" do
+      click_link "Sort by date of publication (descending)"
+    end
+
+    expect(current_path).to eq(books_sort_path("pub_date", :desc))
+
+    within "#books" do
+      expect(page.all(".book")[0]).to have_content(@book_4.title)
+      expect(page.all(".book")[1]).to have_content(@book_3.title)
+      expect(page.all(".book")[2]).to have_content(@book_2.title)
+      expect(page.all(".book")[3]).to have_content(@book_1.title)
+    end
+  end
+
+  it "can sort books by number of ratings" do
+    visit books_path
+
+    within "#sorting" do
+      click_link "Sort by most reviewed"
+    end
+
+    expect(current_path).to eq(books_sort_path("reviews", :desc))
+
+    within "#books" do
+      expect(page.all(".book")[0]).to have_content(@book_1.title)
+      expect(page.all(".book")[1]).to have_content(@book_2.title)
+      expect(page.all(".book")[2]).to have_content(@book_3.title)
+      expect(page.all(".book")[3]).to have_content(@book_4.title)
+    end
+
+    within "#sorting" do
+      click_link "Sort by least reviewed"
+    end
+
+    expect(current_path).to eq(books_sort_path("reviews", :asc))
+
+    within "#books" do
+      expect(page.all(".book")[0]).to have_content(@book_4.title)
+      expect(page.all(".book")[1]).to have_content(@book_3.title)
+      expect(page.all(".book")[2]).to have_content(@book_2.title)
+      expect(page.all(".book")[3]).to have_content(@book_1.title)
     end
   end
 end

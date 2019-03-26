@@ -40,4 +40,19 @@ class Book < ApplicationRecord
     .order("avg_rating ASC")
     .limit(3)
   end
+
+  def self.sort_by_pages(order)
+    order(pages: order)
+  end
+
+  def self.sort_by_pub_date(order)
+    order(pub_date: order)
+  end
+
+  def self.sort_by_num_reviews(order)
+    joins(:reviews)
+    .select("books.*, count(reviews) as num_reviews")
+    .group(:id)
+    .order("num_reviews #{order}")
+  end
 end

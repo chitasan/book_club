@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.all
+    @books = sort_params
     @top_three = Book.top_three
     @bottom_three = Book.bottom_three
     @most_reviews = Review.most_reviews(3)
@@ -46,5 +46,17 @@ class BooksController < ApplicationController
 
   def author_params
     params.require(:book).permit(:authors)
+  end
+
+  def sort_params
+    if params[:sort] == "pages"
+      Book.sort_by_pages(params[:order].to_sym)
+    elsif params[:sort] == "pub_date"
+      Book.sort_by_pub_date(params[:order].to_sym)
+    elsif params[:sort] == "reviews"
+      Book.sort_by_num_reviews(params[:order].upcase)
+    else
+      Book.all
+    end
   end
 end
