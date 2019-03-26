@@ -11,7 +11,9 @@ class ReviewsController < ApplicationController
 
   def create
     @book = Book.find(params[:book_id])
-    @book.reviews.create(review_params)
+    review = @book.reviews.create(review_params)
+    review.user_name = review.user_name.titleize
+    review.save
     redirect_to (book_path(@book))
   end
 
