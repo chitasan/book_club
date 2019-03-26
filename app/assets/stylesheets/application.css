@@ -13,41 +13,46 @@
  *= require_tree .
  *= require_self
  */
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-  font-family: Arial;
+
+ * {
+  font-family: 'Dosis', sans-serif;
+
 }
 
-/* Links inside the navbar */
-.navbar a {
-  float: left;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+header {
+  background: #282828;
+  padding: 20px 30px; 
 }
 
-/* The dropdown container */
+#nav-bar {
+  background: #282828;
+  padding: 20px 30px; 
+  margin: 0;
+  display: flex;
+}
+
+.dropdown-nav {
+  justify-content: flex-end;
+}
+
 .dropdown {
+  margin-left: 100%;
   float: left;
   overflow: hidden;
 }
 
-/* Dropdown button */
 .dropdown .drop-button {
   font-size: 16px; 
   border: none;
   outline: none;
-  color: black;
+  color: white;
   padding: 14px 16px;
   background-color: inherit;
   font-family: inherit;
   margin: 0; 
 }
 
- .dropdown:hover .dropbtn {
+ .dropdown:hover .drop-button{
   background-color: red;
 }
 
@@ -75,4 +80,62 @@
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.stats {
+  background-color: #28A2E4;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 15px 15px 5px;
+  min-height: 150px;
+}
+
+.books {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+* {box-sizing: border-box;}
+
+.books {
+  border: 2px solid #f76707;
+  border-radius: 5px;
+  background-color: #fff4e6;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.books {
+  border: 2px solid #ffa94d;
+  border-radius: 5px;
+  background-color: #ffd8a8;
+  padding: 1em;
+  color: #d9480f;
+}
+
+.books {
+  grid-column: 1 / 4;
+}
+
+.book-info {
+  border: 2px solid #ffec99;
+  border-radius: 5px;
+  background-color: #fff9db;
+  padding: 1em;
+}
+
+.welcome {
+  text-align: center;
+  z-index: 0;
+}
+
+.welcome-image {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+  
 }
