@@ -1,20 +1,21 @@
-<h3>Add a New Book</b></h3>
+<h3>Add a book:</h3>
 <%= form_for @book do |f| %>
   <%= render :partial => "error_message", locals: {object: @book} %>
   <p>
     <%= f.label :title, "Title" %>
     <%= f.text_field :title %><br>
-
-    <%= f.label :authors, "Authors" %>
+  </p>
+  <p>
+    <%= f.label :authors, "Author(s)" %>
     <%= f.text_field :authors, value: "" %><br>
-
+  <p>
     <%= f.label :pages, "Pages" %>
     <%= f.number_field :pages %><br>
-
+  </p>
+  <p>
     <%= f.label :pub_date, "Publication Date" %>
     <%= f.number_field :pub_date %><br>
   </p>
-
   <p>
     <%= f.submit %>
   </p>
