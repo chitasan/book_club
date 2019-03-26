@@ -3,7 +3,8 @@ class Book < ApplicationRecord
   has_many :authors, through: :author_books
   has_many :reviews, dependent: :destroy
 
-  validates_presence_of :title, :pages, :pub_date
+  validates_presence_of :pages, :pub_date
+  validates_uniqueness_of :title
 
   def co_authors(author)
     authors.where.not(id: author.id)
