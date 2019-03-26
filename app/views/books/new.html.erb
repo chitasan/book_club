@@ -1,19 +1,6 @@
-<% if @book.errors.any? %>
-   <div id=“error_message”>
-     <h3>
-       <%= pluralize(@book.errors.count, @error) %> prevented
-       this book from being saved:
-     </h3>
-     <ul>
-       <% @book.errors.full_messages.each do |msg| %>
-         <li><%= msg %></li>
-       <% end %>
-     </ul>
-   </div>
- <% end %>
-
-
+<h3>Add a New Book</b></h3>
 <%= form_for @book do |f| %>
+  <%= render :partial => "error_message", locals: {object: @book} %>
   <p>
     <%= f.label :title, "Title" %>
     <%= f.text_field :title %><br>
@@ -30,6 +17,5 @@
 
   <p>
     <%= f.submit %>
-  </P>
-
+  </p>
 <% end %>

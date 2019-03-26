@@ -14,6 +14,7 @@ class BooksController < ApplicationController
   end
 
   def new
+    object = @book
     @book = Book.new
   end
 
