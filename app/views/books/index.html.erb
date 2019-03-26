@@ -1,22 +1,5 @@
 <h1>Our Club Selection</h1>
 
-<section class="nav">
-  <div class="dropdown", id="dropdown">
-    <button class="drop-button"> Sort Books 
-      <i class="fa fa-caret-down"></i>
-    </button>
-  <div class="dropdown-content">
-    <%= link_to "Page Count: Low to High", books_sort_path("pages", :asc) %>
-    <%= link_to "Page Count: High to Low", books_sort_path("pages", :desc) %>
-    <%= link_to "Publication Date: Oldest to Newest", books_sort_path("pub_date", :asc) %>
-    <%= link_to "Publication Date: Newest to Oldest", books_sort_path("pub_date", :desc) %>
-    <%= link_to "Most Reviewed", books_sort_path("reviews", :desc) %>
-    <%= link_to "Least Reviewed", books_sort_path("reviews", :asc) %>
-    </div>
-  </div>
-</section>
-
-
 <section class="new_book">
   <nav>
     <%= link_to "Add a new book", new_book_path %>
@@ -24,51 +7,55 @@
 </section><br>
 
 <section class="stats" id="book_stats">
-  <h3>Statistics</h3>
-    <section id="best_three">
-      <h4>Highest-Rated Books:</h4>
-        <ul>
-          <% @top_three.each do |book| %>
-            <li><%= link_to book.title, book_path(book) %>, Rating: <%= book.average_rating %></li>
-          <% end %>
-        </ul>
-    </section>
-
-    <section id="worst_three">
-      <h4>Worst-Rated Books:</h4>
-        <ul>
-          <% @bottom_three.each do |book| %>
-            <li><%= link_to book.title, book_path(book) %>, Rating: <%= book.average_rating %></li>
-          <% end %>
-        </ul>
-    </section>
-
-    <section id="most_reviews">
-      <h4>Users With The Most Reviews:</h4>
+  <section id="best_three">
+    <h4>Highest-Rated Books:</h4>
       <ul>
-        <% @most_reviews.each do |user| %>
-          <li><%= link_to user.user_name, user_show_path(user.user_name) %>
-          has written <%= Review.reviews_by_name(user.user_name) %> reviews</li>
+        <% @top_three.each do |book| %>
+          <li><%= link_to book.title, book_path(book) %>, Rating: <%= book.average_rating %></li>
         <% end %>
       </ul>
-    </section>
+  </section>
+
+  <section id="worst_three">
+    <h4>Worst-Rated Books:</h4>
+      <ul>
+        <% @bottom_three.each do |book| %>
+          <li><%= link_to book.title, book_path(book) %>, Rating: <%= book.average_rating %></li>
+        <% end %>
+      </ul>
+  </section>
+
+  <section id="most_reviews">
+    <h4>Users With The Most Reviews:</h4>
+    <ul>
+      <% @most_reviews.each do |user| %>
+        <li><%= link_to user.user_name, user_show_path(user.user_name) %>
+        has written <%= Review.reviews_by_name(user.user_name) %> reviews</li>
+      <% end %>
+    </ul>
+  </section>
 </section>
 
-<ul id="books">
-  <h3>Books</h3>
+<div class="books", id="books">
+<ul>
   <% @books.each do |book| %>
     <li class="book" id="book-<%= book.id %>">
-      <img class="book_cover" src="<%= book.book_cover_photo %>" alt="<%= book.book_cover_photo %>" alt="Book Cover Photo" width="200">
-      <ul>
-      <li><%= link_to book.title, book_path(book) %></li>
-      <li>Author(s):</li>
-      <% book.authors.each do |author| %> <li><%= link_to author.name, author_path(author) %></li>
-      <% end %>
-      <li>Pages: <%= book.pages %></li>
-      <li>Publication Year: <%= book.pub_date %></li>
-      <li>Average Rating: <%= book.average_rating.round(1) %></li>
-      <li>Total No. of Reviews: <%= book.total_reviews %></li>
-      </ul>
+      <div class="book-info">
+        <img class="book_cover" src="<%= book.book_cover_photo %>" alt="<%= book.book_cover_photo %>" alt="Book Cover Photo" width="200">
+      </div>
+      <div class="book-info">
+        <ul>
+          <li><%= link_to book.title, book_path(book) %></li>
+          <li>Author(s):</li>
+          <% book.authors.each do |author| %> <li><%= link_to author.name, author_path(author) %></li>
+          <% end %>
+          <li>Pages: <%= book.pages %></li>
+          <li>Publication Year: <%= book.pub_date %></li>
+          <li>Average Rating: <%= book.average_rating.round(1) %></li>
+          <li>Total No. of Reviews: <%= book.total_reviews %></li>
+        </ul>
+      </div>
     </li>
   <% end %>
 </ul>
+</div>

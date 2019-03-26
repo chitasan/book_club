@@ -1,10 +1,15 @@
-<h1>Welcome to our Book Club Project!</h1>
+<section class="welcome"><br><br>
+<h1>Welcome to our Book Club Project!</h1><br>
 
-<h2>Project Contributors:</h2>
+<h2>Project Contributors:</h2><br>
 
 <% @contributors.each do |c| %>
   <section id="contributor-<%= c.id %>">
     <p>Name: <%= c.name %></p>
-    <p>Github: <%= link_to c.github, "#{c.github}" %></p>
+    <p>Github: <%= link_to c.github, "#{c.github}" %></p><br>
   </section>
 <% end %>
+</section>
+<section class="welcome-image">
+  <%= image_tag ("https://www.rd.com/wp-content/uploads/2017/11/How-Much-Does-a-Book-Need-to-Sell-to-Be-a-Bestseller-509582812-Billion-Photos-1024x683.jpg")%>
+</section>
