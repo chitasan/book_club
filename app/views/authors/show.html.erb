@@ -9,7 +9,7 @@
   <section id="abook-<%= book.id %>">
     <h3> <li><%= link_to book.title, book_path(book) %></li></h3>
     <p>Page Count: <%= book.pages %></p>
-    <p>Publishing Year: <%= book.pub_date %></p>
+    <p>Publication Year: <%= book.pub_date %></p>
     <% if book.co_authors(@author).count > 0 %>
       <p>Co-Authors: <% book.co_authors(@author).each do |author| %><%= author.name %>
                     <% end %>
