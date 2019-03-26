@@ -3,6 +3,8 @@
 <section id="sorting">
   <%= link_to "Sort by page count (ascending)", books_sort_path("pages", :asc) %>
   <%= link_to "Sort by page count (descending)", books_sort_path("pages", :desc) %>
+  <%= link_to "Sort by date of publication (ascending)", books_sort_path("pub_date", :asc) %>
+  <%= link_to "Sort by date of publication (descending)", books_sort_path("pub_date", :desc) %>
 </section>
 
 <section class="new_book">

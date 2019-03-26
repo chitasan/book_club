@@ -59,10 +59,10 @@ RSpec.describe Book do
 
   describe 'class methods' do
     before :each do
-      @book_1 = create(:short_book)
-      @book_2 = create(:book)
-      @book_3 = create(:long_book)
-      @book_4 = create(:book, pages: 600)
+      @book_1 = create(:short_book, pub_date: 1963)
+      @book_2 = create(:book, pub_date: 1950)
+      @book_3 = create(:long_book, pub_date: 1975)
+      @book_4 = create(:book, pages: 600, pub_date: 1954)
 
       @author_1 = create(:author)
       @author_2 = create(:author)
@@ -90,6 +90,11 @@ RSpec.describe Book do
     it ".sort_by_pages" do
       expect(Book.sort_by_pages(:asc)).to eq([@book_1, @book_2, @book_3, @book_4])
       expect(Book.sort_by_pages(:desc)).to eq([@book_4, @book_3, @book_2, @book_1])
+    end
+
+    it ".sort_by_pub_date" do
+      expect(Book.sort_by_pub_date(:asc)).to eq([@book_2, @book_4, @book_1, @book_3])
+      expect(Book.sort_by_pub_date(:desc)).to eq([@book_3, @book_1, @book_4, @book_2])
     end
   end
 end

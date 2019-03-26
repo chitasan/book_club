@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'book index page', type: :feature do
   before :each do
-    @book_4 = create(:book, pages: 600)
-    @book_2 = create(:book)
-    @book_1 = create(:short_book)
-    @book_3 = create(:long_book)
+    @book_4 = create(:book, pages: 600, pub_date: 2000)
+    @book_2 = create(:book, pub_date: 1950)
+    @book_1 = create(:short_book, pub_date: 1900)
+    @book_3 = create(:long_book, pub_date: 1975)
     @author_1 = create(:author)
     @author_2 = create(:author)
 
@@ -106,6 +106,36 @@ RSpec.describe 'book index page', type: :feature do
     end
 
     expect(current_path).to eq(books_sort_path("pages", :desc))
+
+    within "#books" do
+      expect(page.all(".book")[0]).to have_content(@book_4.title)
+      expect(page.all(".book")[1]).to have_content(@book_3.title)
+      expect(page.all(".book")[2]).to have_content(@book_2.title)
+      expect(page.all(".book")[3]).to have_content(@book_1.title)
+    end
+  end
+
+  it "can sort books by pub_date" do
+    visit books_path
+
+    within "#sorting" do
+      click_link "Sort by date of publication (ascending)"
+    end
+
+    expect(current_path).to eq(books_sort_path("pub_date", :asc))
+
+    within "#books" do
+      expect(page.all(".book")[0]).to have_content(@book_1.title)
+      expect(page.all(".book")[1]).to have_content(@book_2.title)
+      expect(page.all(".book")[2]).to have_content(@book_3.title)
+      expect(page.all(".book")[3]).to have_content(@book_4.title)
+    end
+
+    within "#sorting" do
+      click_link "Sort by date of publication (descending)"
+    end
+
+    expect(current_path).to eq(books_sort_path("pub_date", :desc))
 
     within "#books" do
       expect(page.all(".book")[0]).to have_content(@book_4.title)

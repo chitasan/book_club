@@ -44,4 +44,8 @@ class Book < ApplicationRecord
   def self.sort_by_pages(order)
     order(pages: order)
   end
+
+  def self.sort_by_pub_date(order)
+    order(pub_date: order)
+  end
 end
