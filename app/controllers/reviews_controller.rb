@@ -13,8 +13,11 @@ class ReviewsController < ApplicationController
     @book = Book.find(params[:book_id])
     review = @book.reviews.create(review_params)
     review.user_name = review.user_name.titleize
-    review.save
-    redirect_to (book_path(@book))
+    if review.save
+      redirect_to (book_path(@book))
+    else
+      redirect_to (new_book_review_path(@book))
+    end
   end
 
   def delete
