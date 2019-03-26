@@ -40,4 +40,8 @@ class Book < ApplicationRecord
     .order("avg_rating ASC")
     .limit(3)
   end
+
+  def self.sort_by_pages(order)
+    order(pages: order)
+  end
 end

@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'book index page', type: :feature do
   before :each do
-    @book_1 = create(:book)
+    @book_4 = create(:book, pages: 600)
     @book_2 = create(:book)
-    @book_3 = create(:book)
-    @book_4 = create(:book)
+    @book_1 = create(:short_book)
+    @book_3 = create(:long_book)
     @author_1 = create(:author)
     @author_2 = create(:author)
 
@@ -59,7 +59,7 @@ RSpec.describe 'book index page', type: :feature do
 
   it 'shows statistics about all books' do
     visit books_path
-    
+
     within "#book_stats" do
 
       within "#best_three" do
@@ -82,6 +82,23 @@ RSpec.describe 'book index page', type: :feature do
         expect(page).to have_content("#{@review_2.user_name} has written #{Review.reviews_by_name("User 2")} reviews")
         expect(page).to have_content("#{@review_3.user_name} has written #{Review.reviews_by_name("User 3")} reviews")
       end
+    end
+  end
+
+  it "can sort books by pages" do
+    visit books_path
+
+    within "#sorting" do
+      click_link "Sort by page count (ascending)"
+    end
+
+    expect(current_path).to eq(books_sort_path("pages", :asc))
+
+    within "#books" do
+      expect(page.all(".book")[0]).to have_content(@book_1.title)
+      expect(page.all(".book")[1]).to have_content(@book_2.title)
+      expect(page.all(".book")[2]).to have_content(@book_3.title)
+      expect(page.all(".book")[3]).to have_content(@book_4.title)
     end
   end
 end

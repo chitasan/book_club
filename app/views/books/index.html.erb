@@ -1,5 +1,9 @@
 <h1>Our Club Selection</h1>
 
+<section id="sorting">
+  <%= link_to "Sort by page count (ascending)", books_sort_path("pages", :asc) %>
+</section>
+
 <section class="new_book">
   <nav>
     <%= link_to "Add a new book", new_book_path %>
@@ -37,10 +41,10 @@
     </section>
 </section>
 
-<section>
+<ul id="books">
   <h3>Books</h3>
   <% @books.each do |book| %>
-    <article class="book" id="book-<%= book.id %>">
+    <li class="book" id="book-<%= book.id %>">
       <img class="book_cover" src="<%= book.book_cover_photo %>" alt="<%= book.book_cover_photo %>" alt="Book Cover Photo" width="200">
       <ul>
       <li><%= link_to book.title, book_path(book) %></li>
@@ -52,6 +56,6 @@
       <li>Average Rating: <%= book.average_rating.round(1) %></li>
       <li>Total No. of Reviews: <%= book.total_reviews %></li>
       </ul>
-    </article>
+    </li>
   <% end %>
-</section>
+</ul>
