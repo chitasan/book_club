@@ -16,18 +16,21 @@ RSpec.describe "user show page" do
       expect(page).to have_content("#{@review1.user_name}'s page")
 
       within "#review-#{@review1.id}" do
+        expect(page).to have_link(@review1.book.title)
         expect(page).to have_content(@review1.title)
         expect(page).to have_content("Rating: #{@review1.rating}")
         expect(page).to have_content(@review1.content)
       end
 
       within "#review-#{@review2.id}" do
+        expect(page).to have_link(@review2.book.title)
         expect(page).to have_content(@review2.title)
         expect(page).to have_content("Rating: #{@review2.rating}")
         expect(page).to have_content(@review2.content)
       end
 
       within "#review-#{@review3.id}" do
+        expect(page).to have_link(@review3.book.title)
         expect(page).to have_content(@review3.title)
         expect(page).to have_content("Rating: #{@review3.rating}")
         expect(page).to have_content(@review3.content)

@@ -22,12 +22,20 @@ class BooksController < ApplicationController
     @book = Book.create(book_params)
     @book.title = @book.title.titleize
     authors = author_params[:authors].split(", ")
+
+
     if @book.save
-      authors.each do |author|
-        book_author = Author.find_or_create_by(name: author.titleize)
-        AuthorBook.create(author: book_author, book: @book)
+      if authors.length == 0
+        @book.destroy
+        redirect_to new_book_path
+        flash[:failure] = "A book needs at least one author"
+      else
+        authors.each do |author|
+          book_author = Author.find_or_create_by(name: author.titleize)
+          AuthorBook.create(author: book_author, book: @book)
+        end
+        redirect_to book_path(@book)
       end
-      redirect_to book_path(@book)
     else
       render 'books/new'
     end
