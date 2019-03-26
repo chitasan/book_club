@@ -179,6 +179,14 @@ header {
   font-size: 20pt;
 }
 
-#book-header {
-  background-color: #d8d8d8;
+.author-show {
+  text-align: center;
+}
+
+#author-info {
+  font-size: 20pt;
+}
+
+#title {
+  font-size: 15pt;
 }
