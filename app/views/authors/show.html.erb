@@ -2,7 +2,7 @@
   <h1><%= @author.name %></h1>
 </section>
 
-  <p><%= link_to "Delete this author", delete_author_path(@author), method: :delete %></p>
+  <p><%= link_to "Delete this author", delete_author_path(@author), method: :delete, data: { confirm: "Are you sure?" } %></p>
 
 
 <% @author.books.each do |book| %>
