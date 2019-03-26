@@ -1,10 +1,12 @@
-<h1>Our Club Selection</h1>
+<section class="book-index-header"><br><br>
+  <h1 class="club-selection">Our Club Selection</h1>
 
-<section class="new_book">
-  <nav>
-    <%= link_to "Add a new book", new_book_path %>
-  <nav>
-</section><br>
+  <section class="new_book">
+    <nav>
+      <%= link_to "Add a new book", new_book_path %>
+    <nav>
+  </section><br>
+</section>
 
 <section class="stats" id="book_stats">
   <section id="best_three">
@@ -46,8 +48,8 @@
       <div class="book-info">
         <ul>
           <li><%= link_to book.title, book_path(book) %></li>
-          <li>Author(s):</li>
-          <% book.authors.each do |author| %> <li><%= link_to author.name, author_path(author) %></li>
+          <li>Author(s):
+          <% book.authors.each do |author| %><%= link_to author.name, author_path(author) %></li>
           <% end %>
           <li>Pages: <%= book.pages %></li>
           <li>Publication Year: <%= book.pub_date %></li>

@@ -1,45 +1,44 @@
-<section class="book" id="book-<%= @book.id %>">
-  <h1><%= @book.title %></h1>
+<section class="book-show">
+<section class="book" id="book-<%= @book.id %>"><br>
+  <h1 class="book-title"><%= @book.title %></h1><br>
 
   <img src="<%= @book.book_cover_photo %>" alt="Book Cover Photo">
   <ul>
-  <li>Author(s):</li>
+  <li>Author(s):
     <% @book.authors.each do |author| %>
-      <li><%= link_to author.name, author_path(author) %></li>
+      <%= link_to author.name, author_path(author) %></li>
     <% end %>
   <li>Pages: <%= @book.pages %></li>
-  <li>Publication Year: <%= @book.pub_date %></li>
+  <li>Publication Year: <%= @book.pub_date %></li><br><br>
   </ul>
-  <p><%= link_to "Delete this book", delete_book_path(@book), method: :delete, data: { confirm: "Are you sure?" }%></p>
+  <p><%= link_to "Delete this book", delete_book_path(@book), method: :delete, data: { confirm: "Are you sure?" }%></p><br>
+  <p><%= link_to "Write a new review for this book", new_book_review_path(@book) %></p><br><br>
 </section>
 
-<h3>Review Statistics</h3>
+<% unless @book.reviews.empty? %>
+    <p class="book">Average Rating: <%= @average_rating.round(1) %></p><br>
+  <% end %>
 <section class="review_stats" id="review_stats">
-  <p>Top 3 Reviews:
     <ul>
+      <p>Top 3 Reviews:</p><br>
       <% @top_reviews.each do |review| %>
         <li><%= review.title %></li>
         <li>Rating: <%= review.rating %></li>
-        <li>User: <%= review.user_name %></li>
+        <li>User: <%= review.user_name %></li><br>
       <% end %>
-    </ul>
-  </p>
-  <p>Bottom 3 Reviews:
+    </ul><br>
      <ul>
-       <% @bottom_reviews.each do |review| %>
+      <p>Bottom 3 Reviews:</p><br>
+      <% @bottom_reviews.each do |review| %>
         <li><%= review.title %></li>
         <li>Rating: <%= review.rating %></li>
-        <li>User: <%= review.user_name %></li>
+        <li>User: <%= review.user_name %></li><br>
       <% end %>
     </ul>
-  </p>
-  <% unless @book.reviews.empty? %>
-    <p>Overall Average Rating: <%= @average_rating.round(1) %></p>
-  <% end %>
-</section>
+</section><br>
 
-<h3>Reviews</h3>
-  <%= link_to "Write a new review for this book", new_book_review_path(@book) %>
+<h3 class="book">All Reviews</h3><br>
+<section class="book-reviews">
   <% @book.reviews.each do |review| %>
     <section class="reviews" id="review-<%= review.id %>">
       <p>User: <%= link_to review.user_name, user_show_path(review.user_name) %></p>
@@ -48,3 +47,5 @@
       <p>Rating: <%= review.rating %></p><br>
     </section>
   <% end %>
+</section>
+</section>
