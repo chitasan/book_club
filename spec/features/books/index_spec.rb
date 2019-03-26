@@ -91,8 +91,8 @@ RSpec.describe 'book index page', type: :feature do
   it "can sort books by pages" do
     visit books_path
 
-    within "#sorting" do
-      click_link "Sort by page count (ascending)"
+    within "#dropdown" do
+      click_link "Page Count: Low to High"
     end
 
     expect(current_path).to eq(books_sort_path("pages", :asc))
@@ -104,8 +104,8 @@ RSpec.describe 'book index page', type: :feature do
       expect(page.all(".book")[3]).to have_content(@book_4.title)
     end
 
-    within "#sorting" do
-      click_link "Sort by page count (descending)"
+    within "#dropdown" do
+      click_link "Page Count: High to Low"
     end
 
     expect(current_path).to eq(books_sort_path("pages", :desc))
@@ -121,8 +121,8 @@ RSpec.describe 'book index page', type: :feature do
   it "can sort books by pub date" do
     visit books_path
 
-    within "#sorting" do
-      click_link "Sort by date of publication (ascending)"
+    within "#dropdown" do
+      click_link "Publication Date: Oldest to Newest"
     end
 
     expect(current_path).to eq(books_sort_path("pub_date", :asc))
@@ -134,8 +134,8 @@ RSpec.describe 'book index page', type: :feature do
       expect(page.all(".book")[3]).to have_content(@book_4.title)
     end
 
-    within "#sorting" do
-      click_link "Sort by date of publication (descending)"
+    within "#dropdown" do
+      click_link "Publication Date: Newest to Oldest"
     end
 
     expect(current_path).to eq(books_sort_path("pub_date", :desc))
@@ -151,8 +151,8 @@ RSpec.describe 'book index page', type: :feature do
   it "can sort books by number of ratings" do
     visit books_path
 
-    within "#sorting" do
-      click_link "Sort by most reviewed"
+    within "#dropdown" do
+      click_link "Most Reviewed"
     end
 
     expect(current_path).to eq(books_sort_path("reviews", :desc))
@@ -164,8 +164,8 @@ RSpec.describe 'book index page', type: :feature do
       expect(page.all(".book")[3]).to have_content(@book_4.title)
     end
 
-    within "#sorting" do
-      click_link "Sort by least reviewed"
+    within "#dropdown" do
+      click_link "Least Reviewed"
     end
 
     expect(current_path).to eq(books_sort_path("reviews", :asc))
