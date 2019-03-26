@@ -51,8 +51,10 @@ class BooksController < ApplicationController
   def sort_params
     if params[:sort] == "pages"
       Book.sort_by_pages(params[:order].to_sym)
-    elsif params[:sort]== "pub_date"
+    elsif params[:sort] == "pub_date"
       Book.sort_by_pub_date(params[:order].to_sym)
+    elsif params[:sort] == "reviews"
+      Book.sort_by_num_reviews(params[:order].upcase)
     else
       Book.all
     end

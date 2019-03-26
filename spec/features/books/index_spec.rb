@@ -13,9 +13,12 @@ RSpec.describe 'book index page', type: :feature do
     AuthorBook.create(author: @author_2, book: @book_2)
 
     @review_1 = create(:good_review, book: @book_1, user_name: "User 1")
+    @review_8 = create(:good_review, book: @book_1, user_name: "User 1")
+    @review_9 = create(:good_review, book: @book_1, user_name: "User 1")
     @review_2 = create(:good_review, book: @book_1, user_name: "User 2")
     @review_3 = create(:review, book: @book_2, user_name: "User 3")
     @review_4 = create(:review, book: @book_2, user_name: "User 1")
+    @review_10 = create(:review, book: @book_2, user_name: "User 1")
     @review_5 = create(:review, book: @book_3, user_name: "User 2")
     @review_6 = create(:bad_review, book: @book_3, user_name: "User 3")
     @review_7 = create(:bad_review, book: @book_4, user_name: "User 4")
@@ -115,7 +118,7 @@ RSpec.describe 'book index page', type: :feature do
     end
   end
 
-  it "can sort books by pub_date" do
+  it "can sort books by pub date" do
     visit books_path
 
     within "#sorting" do
@@ -136,6 +139,36 @@ RSpec.describe 'book index page', type: :feature do
     end
 
     expect(current_path).to eq(books_sort_path("pub_date", :desc))
+
+    within "#books" do
+      expect(page.all(".book")[0]).to have_content(@book_4.title)
+      expect(page.all(".book")[1]).to have_content(@book_3.title)
+      expect(page.all(".book")[2]).to have_content(@book_2.title)
+      expect(page.all(".book")[3]).to have_content(@book_1.title)
+    end
+  end
+
+  it "can sort books by number of ratings" do
+    visit books_path
+
+    within "#sorting" do
+      click_link "Sort by most reviewed"
+    end
+
+    expect(current_path).to eq(books_sort_path("reviews", :desc))
+
+    within "#books" do
+      expect(page.all(".book")[0]).to have_content(@book_1.title)
+      expect(page.all(".book")[1]).to have_content(@book_2.title)
+      expect(page.all(".book")[2]).to have_content(@book_3.title)
+      expect(page.all(".book")[3]).to have_content(@book_4.title)
+    end
+
+    within "#sorting" do
+      click_link "Sort by least reviewed"
+    end
+
+    expect(current_path).to eq(books_sort_path("reviews", :asc))
 
     within "#books" do
       expect(page.all(".book")[0]).to have_content(@book_4.title)

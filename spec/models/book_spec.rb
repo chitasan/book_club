@@ -72,11 +72,14 @@ RSpec.describe Book do
 
       @review_1 = create(:good_review, book: @book_1)
       @review_2 = create(:good_review, book: @book_1)
-      @review_3 = create(:good_review, book: @book_2)
-      @review_4 = create(:review, book: @book_2)
-      @review_5 = create(:review, book: @book_3)
-      @review_6 = create(:review, book: @book_3)
-      @review_7 = create(:bad_review, book: @book_4)
+      @review_3 = create(:good_review, book: @book_1)
+      @review_10 = create(:good_review, book: @book_1)
+      @review_4 = create(:good_review, book: @book_2)
+      @review_5 = create(:review, book: @book_2)
+      @review_6 = create(:review, book: @book_2)
+      @review_7 = create(:review, book: @book_3)
+      @review_8 = create(:bad_review, book: @book_3)
+      @review_9 = create(:bad_review, book: @book_4)
     end
 
     it ".top_three" do
@@ -95,6 +98,11 @@ RSpec.describe Book do
     it ".sort_by_pub_date" do
       expect(Book.sort_by_pub_date(:asc)).to eq([@book_2, @book_4, @book_1, @book_3])
       expect(Book.sort_by_pub_date(:desc)).to eq([@book_3, @book_1, @book_4, @book_2])
+    end
+
+    it ".sort_by_num_reviews" do
+      expect(Book.sort_by_num_reviews("ASC")).to eq([@book_4, @book_3, @book_2, @book_1])
+      expect(Book.sort_by_num_reviews("DESC")).to eq([@book_1, @book_2, @book_3, @book_4])
     end
   end
 end
