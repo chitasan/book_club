@@ -1,3 +1,6 @@
+<% flash.each do |type, message| %>
+<%= content_tag :div, message, class: type %>
+<%  end %>
 <h3>Add a book:</h3>
 <%= form_for @book do |f| %>
   <%= render :partial => "error_message", locals: {object: @book} %>
@@ -10,11 +13,11 @@
     <%= f.text_field :authors, value: "" %>
   <p>
     <%= f.label :pages, "Pages" %>
-    <%= f.number_field :pages %><br>
+    <%= f.number_field :pages, min: 1 %><br>
   </p>
   <p>
     <%= f.label :pub_date, "Publication Date" %>
-    <%= f.number_field :pub_date %>
+    <%= f.number_field :pub_date, min: 1455 %>
   </p>
   <p>
     <%= f.submit %>

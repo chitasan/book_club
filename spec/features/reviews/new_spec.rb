@@ -43,7 +43,7 @@ RSpec.describe "new review" do
 
       click_button "Create Review"
 
-      expect(page).to have_content
+      expect(page).to have_content("1 error prevented it from being saved:")
     end
   end
 end
