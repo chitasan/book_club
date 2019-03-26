@@ -1,6 +1,3 @@
-<% flash.each do |type, message| %>
-<%= content_tag :div, message, class: type %>
-<%  end %>
 <h3>Add a book:</h3>
 <%= form_for @book do |f| %>
   <%= render :partial => "error_message", locals: {object: @book} %>

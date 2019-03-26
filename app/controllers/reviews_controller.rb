@@ -16,7 +16,9 @@ class ReviewsController < ApplicationController
     if review.save
       redirect_to (book_path(@book))
     else
-      redirect_to (new_book_review_path(@book))
+      @review = Review.new
+      flash[:failure] = "All fields are required"
+      render :new
     end
   end
 

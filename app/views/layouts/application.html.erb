@@ -10,6 +10,10 @@
 
   <body>
     <section id="nav-bar">
+      <% flash.each do |type, message| %>
+      <%= content_tag :div, message, class: type %>
+      <%  end %>
+      
       <% unless @contributors %>
         <%= link_to "Return to Homepage", root_path %>
       <% end %>
