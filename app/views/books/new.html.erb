@@ -3,18 +3,18 @@
   <%= render :partial => "error_message", locals: {object: @book} %>
   <p>
     <%= f.label :title, "Title" %>
-    <%= f.text_field :title %><br>
+    <%= f.text_field :title %>
   </p>
   <p>
     <%= f.label :authors, "Author(s)" %>
-    <%= f.text_field :authors, value: "" %><br>
+    <%= f.text_field :authors, value: "" %>
   <p>
     <%= f.label :pages, "Pages" %>
     <%= f.number_field :pages %><br>
   </p>
   <p>
     <%= f.label :pub_date, "Publication Date" %>
-    <%= f.number_field :pub_date %><br>
+    <%= f.number_field :pub_date %>
   </p>
   <p>
     <%= f.submit %>
