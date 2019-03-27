@@ -21,7 +21,7 @@ The project requires a creating a basic Rails web app that
 `rake db:drop db:create db:migrate db:seed`
 
 ## Testing
-The project uses <a href="https://github.com/colszowka/simplecov"> SimpleCov</a> and <a href="https://github.com/rspec/rspec"> </a>RSpec to test. 
+The project uses <a href="https://github.com/colszowka/simplecov"> SimpleCov</a> and <a href="https://github.com/rspec/rspec"> RSpec</a> to test. 
 
 `rspec` runs the tests.
 
