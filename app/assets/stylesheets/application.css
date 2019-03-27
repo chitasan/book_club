@@ -16,19 +16,23 @@
 
  * {
   font-family: 'Dosis', sans-serif;
-
+  text-decoration: none;
 }
 
 header {
-  background: #282828;
+  background: grey;
   padding: 20px 30px; 
 }
 
 #nav-bar {
-  background: #282828;
+  background: grey;
   padding: 20px 30px; 
   margin: 0;
   display: flex;
+}
+
+.links {
+  margin-right: 10px;
 }
 
 .dropdown-nav {
@@ -49,7 +53,6 @@ header {
   padding: 14px 16px;
   background-color: inherit;
   font-family: inherit;
-  margin: 0; 
 }
 
  .dropdown:hover .drop-button{
@@ -83,11 +86,11 @@ header {
 }
 
 .stats {
-  background-color: #28A2E4;
   display: flex;
-  justify-content: space-between;
-  padding: 15px 15px 15px 5px;
-  min-height: 150px;
+  justify-content: space-evenly;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
 }
 
 .books {
@@ -101,19 +104,20 @@ header {
 * {box-sizing: border-box;}
 
 .books {
-  border: 2px solid #f76707;
+  border: 2px solid#505050;
   border-radius: 5px;
-  background-color: #fff4e6;
+  background-color: #d8d8d8;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
+  align-items: center;
 }
 
 .books {
-  border: 2px solid #ffa94d;
+  border: 2px solid#505050;
   border-radius: 5px;
-  background-color: #ffd8a8;
+  background-color: #d8d8d8;
   padding: 1em;
-  color: #d9480f;
+  color: #black;
 }
 
 .books {
@@ -121,21 +125,85 @@ header {
 }
 
 .book-info {
-  border: 2px solid #ffec99;
-  border-radius: 5px;
-  background-color: #fff9db;
+  border: 1px solid #505050;
+  border-radius: 1px;
+  background-color: #f5f5f5;
   padding: 1em;
 }
 
 .welcome {
   text-align: center;
   z-index: 0;
+  color: white;
 }
 
 .welcome-image {
-  position: absolute;
+  position: fixed;
   left: 0px;
   top: 0px;
   z-index: -1;
-  
+  width: 100%;
+  height: 100%;
+}
+
+.welcome-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.review_stats {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+}
+.book-reviews {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+.book {
+  display: block;
+  text-align: center;
+}
+
+.book-title {
+  font-size: 20pt;
+}
+
+.book-index-header {
+  text-align: center;
+}
+
+.club-selection {
+  font-size: 20pt;
+}
+
+.author-show {
+  text-align: center;
+}
+
+#author-info {
+  font-size: 20pt;
+}
+
+#title {
+  font-size: 15pt;
+}
+
+.add-review {
+  text-align: center;
+}
+
+.add-book {
+  text-align: center;
+}
+
+.user-show {
+  text-align: center;
 }

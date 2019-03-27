@@ -92,6 +92,6 @@ RSpec.describe 'book show page', type: :feature do
     expect(page).to have_content("#{@review_2.title}") 
     expect(page).to have_content("#{review_5.title}") 
     expect(page).to have_content("#{review_6.title}")
-    expect(page).to have_content("Overall Average Rating: #{@book_1.average_rating}")
+    expect(page).to have_content("Average Rating: #{@book_1.average_rating}")
   end
 end

@@ -1,22 +1,24 @@
-<h3>Add a book:</h3>
+<section class="add-book"><br>
+<h3>ADD A BOOK</h3><br>
 <%= form_for @book do |f| %>
-  <%= render :partial => "error_message", locals: {object: @book} %>
+  <%= render :partial => "error_message", locals: {object: @book} %><br>
   <p>
     <%= f.label :title, "Title" %>
     <%= f.text_field :title %>
-  </p>
+  </p><br>
   <p>
     <%= f.label :authors, "Author(s)" %>
     <%= f.text_field :authors, value: "" %>
-  <p>
+  </p>
+  <p><br>
     <%= f.label :pages, "Pages" %>
     <%= f.number_field :pages, min: 1 %><br>
   </p>
-  <p>
+  <p><br>
     <%= f.label :pub_date, "Publication Date" %>
     <%= f.number_field :pub_date, min: 1455 %>
   </p>
-  <p>
+  <p><br>
     <%= f.submit %>
   </p>
 <% end %>

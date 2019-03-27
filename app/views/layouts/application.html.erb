@@ -16,26 +16,26 @@
       <%  end %>
       
       <% unless @contributors %>
-        <div id ="homepage-link">
+        <div class="links" id ="homepage-link">
         <%= link_to "Return to Homepage", root_path %>
         </div>
       <% end %>
       <% if @books %>
-      <section class="dropdown-nav">
-        <div class="dropdown", id="dropdown">
-          <button class="drop-button"> Sort Books 
-            <i class="fa fa-caret-down"></i>
-          </button>
-        <div class="dropdown-content">
-          <%= link_to "Page Count: Low to High", books_sort_path("pages", :asc) %>
-          <%= link_to "Page Count: High to Low", books_sort_path("pages", :desc) %>
-          <%= link_to "Publication Date: Oldest to Newest", books_sort_path("pub_date", :asc) %>
-          <%= link_to "Publication Date: Newest to Oldest", books_sort_path("pub_date", :desc) %>
-          <%= link_to "Most Reviewed", books_sort_path("reviews", :desc) %>
-          <%= link_to "Least Reviewed", books_sort_path("reviews", :asc) %>
+        <section class="dropdown-nav">
+          <div class="dropdown", id="dropdown">
+            <button class="drop-button"> Sort Books 
+              <i class="fa fa-caret-down"></i>
+            </button>
+          <div class="dropdown-content">
+            <%= link_to "Page Count: Low to High", books_sort_path("pages", :asc) %>
+            <%= link_to "Page Count: High to Low", books_sort_path("pages", :desc) %>
+            <%= link_to "Publication Date: Oldest to Newest", books_sort_path("pub_date", :asc) %>
+            <%= link_to "Publication Date: Newest to Oldest", books_sort_path("pub_date", :desc) %>
+            <%= link_to "Most Reviewed", books_sort_path("reviews", :desc) %>
+            <%= link_to "Least Reviewed", books_sort_path("reviews", :asc) %>
+            </div>
           </div>
-        </div>
-      </section>  
+        </section>  
       <% end %>
       <% unless @books %>
         <%= link_to "Go to Books", books_path %>

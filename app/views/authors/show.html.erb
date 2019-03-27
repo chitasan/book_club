@@ -1,27 +1,29 @@
-<section id="author-info">
-  <h1><%= @author.name %></h1>
+<section class="author-show">
+<section id="author-info"><br>
+  <h1><%= @author.name %></h1><br>
 </section>
 
-  <p><%= link_to "Delete this author", delete_author_path(@author), method: :delete, data: { confirm: "Are you sure?" } %></p>
+  <p><%= link_to "Delete this author", delete_author_path(@author), method: :delete, data: { confirm: "Are you sure?" } %></p><br>
 
 
 <% @author.books.each do |book| %>
   <section id="abook-<%= book.id %>">
-    <h3> <li><%= link_to book.title, book_path(book) %></li></h3>
+    <h3 id="title"><%= link_to book.title, book_path(book) %></h3><br>
     <p>Pages: <%= book.pages %></p>
     <p>Publication Year: <%= book.pub_date %></p>
     <% if book.co_authors(@author).count > 0 %>
       <p>Co-Authors: <% book.co_authors(@author).each do |author| %><%= author.name %>
                     <% end %>
-      </p>
+      </p><br><br>
     <% end %>
 
     <% unless book.reviews.count == 0 %>
       <section id="top-review">
         <p>Top Review: <%= book.top_review.title %></p>
         <p>Rating: <%= book.top_review.rating %></p>
-        <p><%= link_to book.top_review.user_name, user_show_path(book.top_review.user_name)%> says: <%= book.top_review.content %></p>
+        <p><%= link_to book.top_review.user_name, user_show_path(book.top_review.user_name)%> says: <%= book.top_review.content %></p><br><br>
       </section>
     <% end %>
   </section>
 <% end %>
+</section>
