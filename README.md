@@ -1,6 +1,6 @@
 # Book Club
 
-This was created while students at Turing School of Software and Design as a Final Individual Project. 
+This was created by two students at Turing School of Software and Design.
 
 ## Objective
 The project requires a creating a basic Rails web app that 
