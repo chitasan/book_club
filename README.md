@@ -12,7 +12,9 @@ The project requires a creating a basic Rails web app that
 
 ## Installation & Setup
 `$ git clone git@github.com:chitasan/book_club.git`
+
 `bundle install`
+
 `rake db:drop db:create db:migrate db:seed`
 
 ## Testing
