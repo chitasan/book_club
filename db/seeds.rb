@@ -16,6 +16,9 @@ king = Author.create(name: "Stephen King")
     review_4 = shining.reviews.create(title: "It's okay", rating: 2, content: "The movie was much better.", user_name: "Wendy")
     review_5 = shining.reviews.create(title: "Wow", rating: 5, content: "This will be a classic.", user_name: "Danny")
 
+    shining.reviews.create(title: "Incredible", rating: 5, content: "This book defies convention on how good a book can be", user_name: "SKinglovr98")
+    shining.reviews.create(title: "TLDR", rating: 1, content: "Movie was better", user_name: "Angryreviewguy")
+    shining.reviews.create(title: "Above average", rating: 4, content: "Well worth your time", user_name: "Bookreeds")
 
 coelho = Author.create(name: "Paulo Coelho")
   alchemist = coelho.books.create(title: "The Alchemist", pages: 163, pub_date: 1988, book_cover_photo:  "https://pictures.abebooks.com/SABRA2015/18269767749.jpg")
