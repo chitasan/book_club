@@ -6,8 +6,11 @@ This was created while students at Turing School of Software and Design as a Fin
 The project requires a creating a basic Rails web app that 
 
   -implements an MVC structure,
+  
   -uses data from databases that we create and manipulate,
+  
   -has basic styling via HTML/CSS,
+  
   -and is TDD using RSpec.
 
 ## Installation & Setup
