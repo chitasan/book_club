@@ -1,22 +1,24 @@
-<h3>Add a review:</h3> 
+<section class="add-review"><br>
+<h3>ADD A REVIEW</h3><br>
 <%= form_for [@book, @review] do |f| %>
   <%= render :partial => "error_message", locals: {object: @review} %>
   <p>
     <%= f.label :title, "Review Title"%>
     <%= f.text_field :title %>
-  </p>
+  </p><br>
   <p>
     <%= f.label :rating %>
     <%= f.number_field :rating, min: 1, max: 5 %>
-  </p>
+  </p><br>
   <p>
     <%= f.label :content, "Review" %>
     <%= f.text_field :content %>
-  </p>
+  </p><br>
   <p>
     <%= f.label :user_name, "Username" %>
     <%= f.text_field :user_name %>
-  </p>
+  </p><br>
   <p>
     <%= f.submit %>
 <% end %>
+</section>
