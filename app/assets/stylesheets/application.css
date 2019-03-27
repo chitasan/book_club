@@ -31,10 +31,6 @@ header {
   display: flex;
 }
 
-.links {
-  margin-right: 10px;
-}
-
 .dropdown-nav {
   justify-content: flex-end;
 }
@@ -135,6 +131,7 @@ header {
   text-align: center;
   z-index: 0;
   color: white;
+  font-size: 20pt;
 }
 
 .welcome-image {
