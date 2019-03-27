@@ -1,4 +1,4 @@
-# # Book Club
+# Book Club
 
 This was created while students at Turing School of Software and Design as a Final Individual Project. 
 
