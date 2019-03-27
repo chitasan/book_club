@@ -2,7 +2,7 @@
 <section class="book" id="book-<%= @book.id %>"><br>
   <h1 class="book-title"><%= @book.title %></h1><br>
 
-  <img src="<%= @book.book_cover_photo %>" alt="Book Cover Photo">
+  <img src="<%= @book.book_cover_photo %>" alt="Book Cover Photo", width="200">
   <ul>
   <li>Author(s):
     <% @book.authors.each do |author| %>

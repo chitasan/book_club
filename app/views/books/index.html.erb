@@ -2,15 +2,13 @@
   <h1 class="club-selection">Our Club Selection</h1>
 
   <section class="new_book">
-    <nav>
       <%= link_to "Add a new book", new_book_path %>
-    <nav>
   </section><br>
 </section>
 
 <section class="stats" id="book_stats">
   <section id="best_three">
-    <h4>Highest-Rated Books:</h4>
+    <h4>Highest-Rated Books:</h4><br>
       <ul>
         <% @top_three.each do |book| %>
           <li><%= link_to book.title, book_path(book) %>, Rating: <%= book.average_rating %></li>
@@ -19,7 +17,7 @@
   </section>
 
   <section id="worst_three">
-    <h4>Worst-Rated Books:</h4>
+    <h4>Worst-Rated Books:</h4><br>
       <ul>
         <% @bottom_three.each do |book| %>
           <li><%= link_to book.title, book_path(book) %>, Rating: <%= book.average_rating %></li>
@@ -28,7 +26,7 @@
   </section>
 
   <section id="most_reviews">
-    <h4>Users With The Most Reviews:</h4>
+    <h4>Users With The Most Reviews:</h4><br>
     <ul>
       <% @most_reviews.each do |user| %>
         <li><%= link_to user.user_name, user_show_path(user.user_name) %>

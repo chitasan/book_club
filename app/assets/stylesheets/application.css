@@ -31,6 +31,10 @@ header {
   display: flex;
 }
 
+.links {
+  margin-right: 10px;
+}
+
 .dropdown-nav {
   justify-content: flex-end;
 }
@@ -49,7 +53,6 @@ header {
   padding: 14px 16px;
   background-color: inherit;
   font-family: inherit;
-  margin: 0; 
 }
 
  .dropdown:hover .drop-button{
@@ -83,11 +86,11 @@ header {
 }
 
 .stats {
-  background-color: white;
   display: flex;
-  justify-content: space-between;
-  padding: 15px 15px 15px 5px;
-  min-height: 150px;
+  justify-content: space-evenly;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
 }
 
 .books {
@@ -154,12 +157,14 @@ header {
   justify-content: space-evenly;
   padding-top: 15px;
   padding-bottom: 15px;
+  text-align: center;
 }
 .book-reviews {
   display: flex;
   justify-content: space-evenly;
   padding-top: 15px;
   padding-bottom: 15px;
+  text-align: center;
 }
 
 .book {
@@ -196,5 +201,9 @@ header {
 }
 
 .add-book {
+  text-align: center;
+}
+
+.user-show {
   text-align: center;
 }
